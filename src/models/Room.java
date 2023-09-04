@@ -6,11 +6,11 @@ public class Room {
 
     private int maxLengthX;
     private int maxLengthY;
-    private ArrayList<Room> nextRoom;
+    private Door enterdoor;
 
-    public Room(int maxLengthX, int maxLengthY, ArrayList<Room> nextRoom) {
+    public Room(int maxLengthX, int maxLengthY, Door enterdoor) {
         this.maxLengthX = maxLengthX;
         this.maxLengthY = maxLengthY;
-        this.nextRoom = nextRoom;
+        this.enterdoor = enterdoor;
     }
 }
