@@ -8,11 +8,14 @@ public class BasicRoom extends Room {
         super(maxLengthX, maxLengthY);
         this.door = enterdoor;
     }
-    
+    /**
+     * Méthode permettant de retourner la map (affichage)
+     * @return String map
+     */
     public String toString() {
         StringBuilder map = new StringBuilder();
-        for (int x = 0; x<this.maxLengthX; x ++) {
-            for (int y = 0; y<this.maxLengthY; y ++) {
+        for (int y = 0; y<this.maxLengthY; y ++) {
+            for (int x = 0; x<this.maxLengthX; x ++) {
                 if (x==this.door.getPosX() && y==this.door.getPosY()) {
                     map.append("P");
                 } else {
@@ -23,5 +26,4 @@ public class BasicRoom extends Room {
         }
         return map.toString();
     }
-
 }
