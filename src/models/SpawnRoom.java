@@ -33,8 +33,8 @@ public class SpawnRoom extends Room {
 
     public String toString() {
         StringBuilder map = new StringBuilder();
-        for (int x = 0; x<this.maxLengthX; x ++) {
-            for (int y = 0; y<this.maxLengthY; y ++) {
+        for (int y = 0; y<this.maxLengthY; y ++) {
+            for (int x = 0; x<this.maxLengthX; x ++) {
                 if (x==this.enterdoor.getPosX() && y==this.enterdoor.getPosY()) {
                     map.append("P");
                 } else {
