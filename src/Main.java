@@ -1,7 +1,12 @@
-import models.Stage;
+import models.Door;
+import models.SpawnRoom;
 
 public class Main {
     public static void main(String[] args) {
-        Stage stage = new stage()
+        SpawnRoom spawn = new SpawnRoom(10, 10);
+
+        Door MarchandDoor = new Door(2, 5, spawn);
+        spawn.setDoor(MarchandDoor);
+        System.out.println(spawn.toString());
     }
 }

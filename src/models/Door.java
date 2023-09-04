@@ -10,4 +10,16 @@ public class Door {
         this.posY = posY;
         this.directionRoom = directionRoom;
     }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public Room getDirectionRoom() {
+        return directionRoom;
+    }
 }
