@@ -14,7 +14,6 @@ public class Player extends Element{
         this.health = 100;
         this.ammo = 10;
         this.state = State.ALIVE;
-        super.setSymbol("p");
     }
 
     public String toString() {
