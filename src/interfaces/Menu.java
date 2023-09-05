@@ -165,7 +165,8 @@ public class Menu {
         cleanup();
         System.out.println("--------------------------------------------------------------------\n");
         System.out
-                .println(Color.RED + "               Vous avez choisi de quitter le jeu !              " + Color.RESET);
+                .println(Color.RED + "                Vous avez choisi de quitter le jeu !                "
+                        + Color.RESET);
         System.out.println("--------------------------------------------------------------------\n");
         try {
             Thread.sleep(1000);
