@@ -1,6 +1,8 @@
+package entity;
 import java.util.ArrayList;
+import map.Element;
 
-public class Player extends Element{
+public class Player extends Element {
     private final String name;
     private int maxHealth;
     private int health;
@@ -9,9 +11,9 @@ public class Player extends Element{
     private ArrayList<Item> items;
     private int maxItem;
     //private int ammoUsed; nombre de munitions utilisées, au bout d'un certain nombre il faut recharger 
-    
-    public Player(int x, int y, String name){
-        super(x, y,"\033[38;2;255;200;241m","😀 ");
+
+    public Player(int x, int y, String name) {
+        super(x, y, "\033[38;2;255;200;241m", "😀 ");
         this.name = name;
         this.maxHealth = 100;
         this.health = 100;
@@ -68,7 +70,7 @@ public class Player extends Element{
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
     }
-    
+
     public void setAmmo(int ammo) {
         this.ammo = ammo;
     }
@@ -81,8 +83,9 @@ public class Player extends Element{
         this.health = health;
     }
 
-    public String statsToString(){
-        return this.name + "; hp:" + this.health + "/" + this.maxHealth + ", state: " + this.state.toString() + ", ammo: " + this.ammo;
+    public String statsToString() {
+        return this.name + "; hp:" + this.health + "/" + this.maxHealth + ", state: " + this.state.toString()
+                + ", ammo: " + this.ammo;
     }
 
     public void addInventory(Item item){
@@ -139,12 +142,11 @@ public class Player extends Element{
     }
 
     public static void main(String[] args) {
-        Player p1 = new Player(0,0,"Patrick");
+        Player p1 = new Player(0, 0, "Patrick");
         System.out.println(p1.toString());
         p1.setAmmo(p1.getAmmo() - 3);
         p1.setHealth(p1.getHealth() - 14);
         System.out.println(p1.toString());
     }
-    
-    
+
 }

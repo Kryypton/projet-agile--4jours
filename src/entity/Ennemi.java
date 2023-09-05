@@ -1,3 +1,7 @@
+package entity;
+
+import map.Element;
+
 public class Ennemi extends Element {
 
     private int health;

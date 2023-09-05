@@ -1,3 +1,5 @@
+package map;
+
 /*public enum Square {
 
     ENEMY("\033[0;31m"," X ",new Info[]{Info.HURTFUL}),
@@ -9,14 +11,15 @@
     EXIT("\033[42m", "   ");
 */
 import java.util.ArrayList;
+
+import entity.Info;
+
 public class Element {
     private int posX;
     private int posY;
     private String color;
     private String symbol;
     private ArrayList<Info> infos;
-
-
 
     public Element(int posX, int posY, String color, String symbol, ArrayList<Info> infos) {
         this.posX = posX;
@@ -26,7 +29,7 @@ public class Element {
         this.infos = infos;
     }
 
-    public Element (int posX, int posY, String color, String symbol) {
+    public Element(int posX, int posY, String color, String symbol) {
         this(posX, posY, color, symbol, new ArrayList<Info>());
         this.infos.add(Info.NONE);
     }
@@ -37,7 +40,7 @@ public class Element {
 
     public boolean isInfo(Info i) {
         boolean b = false;
-        for (int j = 0 ; j < this.infos.size() ; j++) {
+        for (int j = 0; j < this.infos.size(); j++) {
             if (this.infos.get(j) == i)
                 b = true;
         }
@@ -87,5 +90,5 @@ public class Element {
     public ArrayList<Info> getInfos() {
         return infos;
     }
-    
+
 }
