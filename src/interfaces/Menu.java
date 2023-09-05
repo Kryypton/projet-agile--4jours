@@ -75,7 +75,7 @@ public class Menu {
 
     public static void choiced() {
         cleanup();
-        System.out.println("--------------------------------------------------------------------\n");
+        System.out.println("--------------------------------------------------------------------");
         System.out.println(
                 Color.CYAN + "           Veuillez choisir l'une des options ci-dessous :          " + Color.RESET);
         System.out.println(menu());
