@@ -21,10 +21,6 @@ public class Player extends Element{
         return this.getColor() + this.getSymbol();
     }
 
-    public String toString() {
-        return this.getColor() + this.getSymbol();
-    }
-
     public int getMaxHealth() {
         return maxHealth;
     }
