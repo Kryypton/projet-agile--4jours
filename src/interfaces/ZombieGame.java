@@ -20,8 +20,6 @@ public class ZombieGame {
         System.out.println("Pourcentage de bonus : ");
         int utils = sc.nextInt();
 
-        sc.close();
-
         Room m = new Room(xy);
         m.generateMap(enemy, walls, utils); // 5 12 6
         String str = m.toStringMap();

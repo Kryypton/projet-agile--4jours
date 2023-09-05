@@ -1,18 +1,7 @@
 package map;
+import utility.Info;
 
-/*public enum Square {
-
-    ENEMY("\033[0;31m"," X ",new Info[]{Info.HURTFUL}),
-    WALL("\033[48;2;66;66;66m","   ",new Info[]{Info.IMMOVABLE}),
-    PLAYER("\033[38;2;255;200;241m","😀 "),
-    UTILITY("\033[0;33m"," + "),
-    NONE("\033[0m","   "),
-    BORDER("\033[48;2;25;25;25m", "   ",new Info[]{Info.IMMOVABLE}),
-    EXIT("\033[42m", "   ");
-*/
 import java.util.ArrayList;
-
-import entity.Info;
 
 public class Element {
     private int posX;
@@ -69,6 +58,10 @@ public class Element {
 
     public void addInfos(ArrayList<Info> infos) {
         this.infos.addAll(infos);
+    }
+
+    public void removeInfo(Info info) {
+        this.infos.remove(info);
     }
 
     public int getPosX() {

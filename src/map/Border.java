@@ -1,6 +1,6 @@
 package map;
 
-import entity.Info;
+import utility.Info;
 
 public class Border extends Element {
     public Border(int x, int y) {
