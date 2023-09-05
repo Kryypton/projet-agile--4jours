@@ -29,22 +29,24 @@ public class Menu {
         File file2 = new File("res/acsiiArt/rat2.txt");
         for (int index = 0; index < 4; index++) {
             try {
+                StringBuilder str = new StringBuilder();
                 Scanner sc = new Scanner(file1);
                 while (sc.hasNextLine()) {
-                    System.out.println(sc.nextLine());
+                    str = str.append(sc.nextLine() + "\n");
                 }
-
+                System.out.println(str.toString());
                 Thread.sleep(150);
                 cleanup();
             } catch (Exception e) {
                 System.out.println("Erreur de lecture du fichier / fichier inexistant");
             }
             try {
+                StringBuilder str = new StringBuilder();
                 Scanner sc = new Scanner(file2);
                 while (sc.hasNextLine()) {
-                    System.out.println(sc.nextLine());
+                    str = str.append(sc.nextLine() + "\n");
                 }
-
+                System.out.println(str.toString());
                 Thread.sleep(500);
                 cleanup();
             } catch (Exception e) {
