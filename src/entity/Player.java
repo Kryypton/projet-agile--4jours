@@ -156,6 +156,7 @@ public class Player extends Element {
         p1.setAmmo(p1.getAmmo() - 3);
         p1.setHealth(p1.getHealth() - 14);
         System.out.println(p1.toString());
+        p1.afficherInventaire();
     }
 
 }
