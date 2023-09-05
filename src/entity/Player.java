@@ -1,6 +1,7 @@
 package entity;
 import java.util.ArrayList;
 import map.Element;
+import utility.Info;
 
 public class Player extends Element {
     private final String name;
@@ -20,6 +21,7 @@ public class Player extends Element {
         this.health = 100;
         this.ammo = 10;
         this.state = State.ALIVE;
+        this.addInfo(Info.IMMOVABLE);
         initInventory();
     }
 

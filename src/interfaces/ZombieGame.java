@@ -26,6 +26,7 @@ public class ZombieGame {
         System.out.println(str);
         while (true) {
             m.movePlayer();
+            m.moveEnemies();
             System.out.println(m.toStringMap());
         }
     }

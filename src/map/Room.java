@@ -10,7 +10,9 @@ import java.util.Scanner;
 
 import entity.Ennemi;
 import entity.EnnemiType;
+import entity.Item;
 import entity.Player;
+import entity.Chest;
 import interfaces.ZombieGame;
 
 public class Room {
@@ -57,7 +59,7 @@ public class Room {
     public void generateMap(int nbenemy, int nbwall, int nbutil) {
         this.generateWalls(nbwall);
         this.generateEnemies(nbenemy);
-        // this.generateUtil(nbutil);
+        this.generateUtil(nbutil);
         for (int i = 0; i < this.xy; i++) {
             for (int j = 0; j < this.xy; j++) {
                 if (i == 0 || i == this.xy - 1 || j == 0 || j == this.xy - 1)
@@ -117,17 +119,16 @@ public class Room {
         }
     }
 
-    /*
-     * private void generateUtil(int nb) {
-     * for (int i = 1 ; i < xy-1 ; i++) {
-     * for (int j = 1 ; j < xy-1 ; j++) {
-     * if (this.map[i][j] == null && Math.random()*100 <= nb) {
-     * this.map[i][j] = Square.UTILITY;
-     * }
-     * }
-     * }
-     * }
-     */
+    
+    private void generateUtil(int nb) {
+        for (int i = 1 ; i < xy-1 ; i++) {
+            for (int j = 1 ; j < xy-1 ; j++) {
+                if (this.map[i][j] == null && Math.random()*100 <= nb) {
+                    this.map[i][j] = new Chest(i,j,Item.values()[(int)(Math.random()*4)]);
+                }
+            }
+        }
+    }
 
     private void generateExits() {
         int exits = (int) (Math.ceil(Math.random() * 4));
@@ -232,5 +233,48 @@ public class Room {
         if (b)
             this.map[this.player.getPosX()][this.player.getPosY()] = this.player;
         return b;
+    }
+
+    public void refreshEnemyMovement() {
+        for (int i = 0 ; i < this.xy ; i++) {
+            for (int j = 0 ; j < this.xy ; j++) {
+                if (this.map[i][j] instanceof Ennemi) {
+                    this.map[i][j].removeInfo(Info.IMMOVABLE);
+                }
+            }
+        }
+    }
+
+
+    public void moveEnemies() {
+        for (int i = this.player.getPosX()-4 ; i < this.player.getPosX()+4 ; i++) {
+            for (int j = this.player.getPosY()-4 ; j < this.player.getPosY()+4 ; j++) {
+                if (i >= 0 && i < this.xy && j >= 0 && j < this.xy) {
+                    if (this.map[i][j] instanceof Ennemi && !this.map[i][j].isInfo(Info.IMMOVABLE)) {
+                        if (i < this.player.getPosX() && this.map[i+1][j] == null) {
+                            this.map[i+1][j] = this.map[i][j];
+                            this.map[i][j] = null;
+                            this.map[i+1][j].addInfo(Info.IMMOVABLE);
+                        }
+                        else if (i > this.player.getPosX() && this.map[i-1][j] == null) {
+                            this.map[i-1][j] = this.map[i][j];
+                            this.map[i][j] = null;
+                            this.map[i-1][j].addInfo(Info.IMMOVABLE);
+                        }
+                        else if (j < this.player.getPosY() && this.map[i][j+1] == null) {
+                            this.map[i][j+1] = this.map[i][j];
+                            this.map[i][j] = null;
+                            this.map[i][j+1].addInfo(Info.IMMOVABLE);
+                        }
+                        else if (j > this.player.getPosY() && this.map[i][j-1] == null) {
+                            this.map[i][j-1] = this.map[i][j];
+                            this.map[i][j] = null;
+                            this.map[i][j-1].addInfo(Info.IMMOVABLE);
+                        }
+                    }
+                }
+            }
+        }
+        this.refreshEnemyMovement();
     }
 }
