@@ -18,6 +18,38 @@ public class Menu {
         return str;
     }
 
+    public static void loading() {
+        File file1 = new File("res/acsiiArt/rat1.txt");
+        File file2 = new File("res/acsiiArt/rat2.txt");
+        for (int index = 0; index < 4; index++) {
+            try {
+                Scanner sc = new Scanner(file1);
+                while (sc.hasNextLine()) {
+                    System.out.println(sc.nextLine());
+                }
+
+                Thread.sleep(150);
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            } catch (Exception e) {
+                System.out.println("Erreur de lecture du fichier / fichier inexistant");
+            }
+            try {
+                Scanner sc = new Scanner(file2);
+                while (sc.hasNextLine()) {
+                    System.out.println(sc.nextLine());
+                }
+
+                Thread.sleep(500);
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            } catch (Exception e) {
+                System.out.println("Erreur de lecture du fichier / fichier inexistant");
+            }
+
+        }
+    }
+
     public static String welcome() {
         String str = "";
         str += "--------------------------------------------------------------------\n";
