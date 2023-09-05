@@ -1,4 +1,4 @@
-package models;
+package map;
 
 public class Door {
     private int posX;

@@ -1,4 +1,4 @@
-package models;
+package map;
 
 public class SpawnRoom extends Room {
 
@@ -9,10 +9,10 @@ public class SpawnRoom extends Room {
 
     public SpawnRoom(int maxLengthX, int maxLengthY) {
         super(maxLengthX, maxLengthY);
-        this.leftRoom = new BasicRoom(maxLengthX, maxLengthY, new Door(maxLengthX, maxLengthY/2, this));
-        this.upLeftRoom = new BasicRoom(maxLengthX, maxLengthY, new Door(maxLengthX, maxLengthY/3, this));
+        this.leftRoom = new BasicRoom(maxLengthX, maxLengthY, new Door(maxLengthX, maxLengthY / 2, this));
+        this.upLeftRoom = new BasicRoom(maxLengthX, maxLengthY, new Door(maxLengthX, maxLengthY / 3, this));
         this.upRightRoom = new BasicRoom(maxLengthX, maxLengthY, new Door(maxLengthX, maxLengthY, this));
-        this.rightRoom = new BasicRoom(maxLengthX, maxLengthY, new Door(maxLengthX/2, maxLengthY, this));
+        this.rightRoom = new BasicRoom(maxLengthX, maxLengthY, new Door(maxLengthX / 2, maxLengthY, this));
     }
 
     public BasicRoom getLeftRoom() {
@@ -33,9 +33,9 @@ public class SpawnRoom extends Room {
 
     public String toString() {
         StringBuilder map = new StringBuilder();
-        for (int y = 0; y<this.maxLengthY; y ++) {
-            for (int x = 0; x<this.maxLengthX; x ++) {
-                if (x==this.enterdoor.getPosX() && y==this.enterdoor.getPosY()) {
+        for (int y = 0; y < this.maxLengthY; y++) {
+            for (int x = 0; x < this.maxLengthX; x++) {
+                if (x == this.enterdoor.getPosX() && y == this.enterdoor.getPosY()) {
                     map.append("P");
                 } else {
                     map.append("O");
@@ -46,4 +46,3 @@ public class SpawnRoom extends Room {
         return map.toString();
     }
 }
-

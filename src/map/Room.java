@@ -1,7 +1,15 @@
+package map;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import entity.Ennemi;
+import entity.EnnemiType;
+import entity.Info;
+import entity.Player;
+import interfaces.ZombieGame;
 
 public class Room {
 
