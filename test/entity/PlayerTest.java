@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import entity.Item;
 import entity.Player;
@@ -12,10 +13,18 @@ import entity.Player;
 
 public class PlayerTest {
     
-    Player player = new Player(10, 10, "Player 1");
-    Item cle = Item.KEY;
-    ArrayList<Item> compare;
-    Item cle2 = Item.KEY;
+    public Player player;
+    public Item cle;
+    public ArrayList<Item> compare;
+    public Item cle2;
+
+    @BeforeEach
+    public void initialisation(){
+        this.compare = new ArrayList<Item>();
+        this.player = new Player(10, 10, "Player 1");
+        this.cle = Item.KEY;
+        this.cle2 = Item.KEY;
+    }
 
     @Test
     public void statsToStringTest(){
