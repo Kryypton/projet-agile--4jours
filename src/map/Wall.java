@@ -1,6 +1,6 @@
 package map;
 
-import entity.Info;
+import utility.Info;
 
 public class Wall extends Element {
     private int maxHealth;
