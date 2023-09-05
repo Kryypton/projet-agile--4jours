@@ -6,6 +6,11 @@ import java.util.Scanner;
 public class Menu {
     public static Scanner sc = new Scanner(System.in);
 
+    private static void cleanup() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public static String menu() {
         String str;
         str = "--------------------------------------------------------------------\n";
@@ -19,6 +24,7 @@ public class Menu {
     }
 
     public static void loading() {
+        cleanup();
         File file1 = new File("res/acsiiArt/rat1.txt");
         File file2 = new File("res/acsiiArt/rat2.txt");
         for (int index = 0; index < 4; index++) {
@@ -29,8 +35,7 @@ public class Menu {
                 }
 
                 Thread.sleep(150);
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
+                cleanup();
             } catch (Exception e) {
                 System.out.println("Erreur de lecture du fichier / fichier inexistant");
             }
@@ -41,8 +46,7 @@ public class Menu {
                 }
 
                 Thread.sleep(500);
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
+                cleanup();
             } catch (Exception e) {
                 System.out.println("Erreur de lecture du fichier / fichier inexistant");
             }
@@ -64,6 +68,11 @@ public class Menu {
         System.out.println(
                 Color.CYAN + "              >>> Appuyez sur entrée pour continuer <<<             " + Color.RESET);
         sc.nextLine();
+        choiced();
+    }
+
+    public static void choiced() {
+        cleanup();
         System.out.println("--------------------------------------------------------------------\n");
         System.out.println(
                 Color.CYAN + "           Veuillez choisir l'une des options ci-dessous :          " + Color.RESET);
@@ -72,24 +81,25 @@ public class Menu {
         switch (choice) {
             case 1:
                 choiceStartAGame();
-                break;
+                choiced();
             case 2:
                 choiceExplain();
-                break;
+                choiced();
             case 3:
                 choiceCredits();
-                atStart();
+                choiced();
             case 4:
                 choiceQuit();
-                atStart();
+                choiced();
             default:
                 System.out.println("Erreur de saisie, veuillez recommencer");
-                atStart();
+                choiced();
                 break;
         }
     }
 
     public static void choiceStartAGame() {
+        cleanup();
         System.out.println("--------------------------------------------------------------------\n");
         System.out
                 .println(Color.CYAN + "         Vous avez choisi de commencer une nouvelle partie !        "
@@ -105,6 +115,7 @@ public class Menu {
     }
 
     public static void choiceExplain() {
+        cleanup();
         File file = new File("res/text/explain.txt");
         System.out.println("--------------------------------------------------------------------\n");
         System.out.println(Color.CYAN + "         Vous avez choisi de lire les explications !        " + Color.RESET);
@@ -125,6 +136,7 @@ public class Menu {
     }
 
     public static void choiceCredits() {
+        cleanup();
         File file = new File("res/text/credits.txt");
         System.out.println("--------------------------------------------------------------------\n");
         System.out.println(
@@ -148,6 +160,7 @@ public class Menu {
     }
 
     public static void choiceQuit() {
+        cleanup();
         System.out.println("--------------------------------------------------------------------\n");
         System.out
                 .println(Color.RED + "               Vous avez choisi de quitter le jeu !              " + Color.RESET);
