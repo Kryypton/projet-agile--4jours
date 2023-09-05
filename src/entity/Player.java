@@ -1,4 +1,6 @@
-package map;
+package entity;
+
+import map.Element;
 
 public class Player extends Element {
     private final String name;

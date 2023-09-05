@@ -6,6 +6,7 @@ public class Chest extends Element {
     private Item item;
 
     public Chest(Item item) {
+
         this.item = item;
     }
 

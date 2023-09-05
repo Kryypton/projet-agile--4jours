@@ -1,14 +1,13 @@
 package interfaces;
 
 import java.util.Scanner;
-
-import map.Player;
+import entity.Player;
 import map.Room;
 
 public class ZombieGame {
     public static final Player PLAYER = new Player(12, 12, "Jambon");
 
-    public static void main(String[] args) {
+    public void start() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Dimensions : ");
