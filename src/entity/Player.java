@@ -10,6 +10,7 @@ public class Player extends Element {
     private State state;
     private ArrayList<Item> items;
     private int maxItem;
+    private int damage;
     //private int ammoUsed; nombre de munitions utilisées, au bout d'un certain nombre il faut recharger 
 
     public Player(int x, int y, String name) {
@@ -28,6 +29,10 @@ public class Player extends Element {
 
     public int getMaxHealth() {
         return maxHealth;
+    }
+
+    public int getDamage() {
+        return damage;
     }
 
     public int getAmmo() {
@@ -83,6 +88,10 @@ public class Player extends Element {
         this.health = health;
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public String statsToString() {
         return this.name + "; hp:" + this.health + "/" + this.maxHealth + ", state: " + this.state.toString()
                 + ", ammo: " + this.ammo;
@@ -126,10 +135,10 @@ public class Player extends Element {
     }
 
     public void consommerItem(Item item){
-        if(item.name().equals(Item.HEAL.name())){
+        if(item.name().equals(Item.HEAL.name()) && this.health < this.maxHealth){
             if(supInventory(item)){
                 this.health = this.health + Item.HEAL.getH();
-                if(this.health < this.maxHealth){
+                if(this.health > this.maxHealth){
                     this.health = this.health - (this.maxHealth - this.health);
                 }
             }
