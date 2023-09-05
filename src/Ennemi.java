@@ -7,12 +7,14 @@ public class Ennemi extends Element{
     private EnnemiType type;
     //ajouter drop, taux de drop
 
-    public Ennemi(EnnemiType type){
+    public Ennemi(EnnemiType type, int posX, int posY){
+        super(posX, posY);
         this.type = type;
         this.health = type.getHealth();
         this.damage = type.getDamage();
         this.range = type.getRange();
         this.cost = type.getCost();
+        super.setSymbol( "" + type.getCarT());
     }
 
     public int getCost() {
@@ -54,8 +56,6 @@ public class Ennemi extends Element{
     public void setType(EnnemiType type) {
         this.type = type;
     }
-    
-
     
 }
 

@@ -8,7 +8,7 @@
     BORDER("\033[48;2;25;25;25m", "   ",new Info[]{Info.IMMOVABLE}),
     EXIT("\033[42m", "   ");
 */
-import java.awt.color;
+import java.awt.Color;
 public class Element {
     private int posX;
     private int posY;

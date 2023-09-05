@@ -9,12 +9,14 @@ public class Player extends Element{
     //private List<Item> items;
     //private int amoUsed; nombre de munitions utilisées, au bout d'un certain nombre il faut recharger 
     
-    public Player(String name){
+    public Player(String name, int posX, int posY){
+        super(posX, posY);
         this.name = name;
         this.maxHealth = 100;
         this.health = 100;
         this.amo = 10;
         this.state = State.ALIVE;
+        super.setSymbol("p");
     }
 
     public int getMaxHealth() {
@@ -58,7 +60,7 @@ public class Player extends Element{
     }
 
     public static void main(String[] args) {
-        Player p1 = new Player("Patrick");
+        Player p1 = new Player("Patrick", 5,5);
         System.out.println(p1.toString());
         p1.setAmo(p1.getAmo() - 3);
         p1.setHealth(p1.getHealth() - 14);
