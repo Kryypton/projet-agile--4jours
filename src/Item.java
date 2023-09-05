@@ -36,6 +36,8 @@ public enum Item {
         return getName()+" : "+getDesc()+" --> "+getH()+" pv, "+getDamage()+" damage.";
     }
 
+    /* test d'affichage
+    
     public static void main(String args[]){
         Item cle = Item.KEY;
         Item soin = Item.HEAL;
@@ -46,5 +48,6 @@ public enum Item {
         System.out.println(grenade.toString());
         System.out.println(munitions.toString());
     }
+    */
 }
 
