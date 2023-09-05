@@ -14,6 +14,17 @@ public class Ennemi extends Element{
         this.damage = type.getDamage();
         this.range = type.getRange();
         this.cost = type.getCost();
+        super.setSymbol( "" + type.getCarT());
+    }
+
+    public static String pickEnemySymbol(EnnemiType t) {
+        if (t == EnnemiType.RAT) return "   ";
+        if (t == EnnemiType.COCKROACH) return "   ";
+        /*if (t == EnnemiType.ZOMBIE)*/ return "   ";
+    }
+
+    public String toString() {
+        return this.getColor() + this.getSymbol();
     }
 
     public static String pickEnemySymbol(EnnemiType t) {
@@ -65,8 +76,6 @@ public class Ennemi extends Element{
     public void setType(EnnemiType type) {
         this.type = type;
     }
-    
-
     
 }
 
