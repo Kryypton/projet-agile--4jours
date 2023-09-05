@@ -1,4 +1,4 @@
-# Sprint 
+# Sprint 0
 
 ## Démo + Planification du sprint suivant
 
@@ -7,8 +7,7 @@ Ce sprint a servi à la discussion des idées concernant le projet puis à la cr
 des histiores utilisateurs.
 
 ### Ce que nous allons faire durant le prochain sprint
-Création du joueur.
-Structure d'une map.
+Création du joueur et des items.
 
 ## Rétrospective
 
