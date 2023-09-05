@@ -8,12 +8,18 @@ public class Fight {
     public Ennemi e;
 
     public void inflictDamage(){
-        int damageCaused = p.getDamage();
-        if(damageCaused < e.getHealth()){
-            damageCaused = damageCaused - (damageCaused - e.getHealth());
-            
+        if(p.getAmmo() < 0){
+
+            int damageCaused = p.getDamage();
+            if(damageCaused < e.getHealth()){
+                damageCaused = damageCaused - (damageCaused - e.getHealth());
+                
+            }
+            e.setHealth(e.getHealth() - damageCaused);
+            p.setAmmo(p.getAmmo() - 1);
+        }else{
+            System.out.println("\n ! plus de munitions ! \n ");
         }
-        e.setHealth(e.getHealth() - damageCaused);
     }
 
     public void receiveDamage(){
