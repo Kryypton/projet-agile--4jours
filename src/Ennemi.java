@@ -7,12 +7,23 @@ public class Ennemi extends Element{
     private EnnemiType type;
     //ajouter drop, taux de drop
 
-    public Ennemi(EnnemiType type){
+    public Ennemi(int x, int y, EnnemiType type){
+        super(x,y,"\033[0;31m",pickEnemySymbol(type));
         this.type = type;
         this.health = type.getHealth();
         this.damage = type.getDamage();
         this.range = type.getRange();
         this.cost = type.getCost();
+    }
+
+    public static String pickEnemySymbol(EnnemiType t) {
+        if (t == EnnemiType.RAT) return "   ";
+        if (t == EnnemiType.COCKROACH) return "   ";
+        /*if (t == EnnemiType.ZOMBIE)*/ return "   ";
+    }
+
+    public String toString() {
+        return this.getColor() + this.getSymbol();
     }
 
     public int getCost() {

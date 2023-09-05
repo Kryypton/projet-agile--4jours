@@ -1,28 +1,31 @@
-
-
 public class Player extends Element{
     private final String name;
     private int maxHealth;
     private int health;
-    private int amo;
+    private int ammo;
     private State state;
     //private List<Item> items;
-    //private int amoUsed; nombre de munitions utilisées, au bout d'un certain nombre il faut recharger 
+    //private int ammoUsed; nombre de munitions utilisées, au bout d'un certain nombre il faut recharger 
     
-    public Player(String name){
+    public Player(int x, int y, String name){
+        super(x, y,"\033[38;2;255;200;241m","😀 ");
         this.name = name;
         this.maxHealth = 100;
         this.health = 100;
-        this.amo = 10;
+        this.ammo = 10;
         this.state = State.ALIVE;
+    }
+
+    public String toString() {
+        return this.getColor() + this.getSymbol();
     }
 
     public int getMaxHealth() {
         return maxHealth;
     }
 
-    public int getAmo() {
-        return amo;
+    public int getAmmo() {
+        return ammo;
     }
 
     public State getState() {
@@ -41,8 +44,8 @@ public class Player extends Element{
         this.maxHealth = maxHealth;
     }
     
-    public void setAmo(int amo) {
-        this.amo = amo;
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
     }
 
     public void setState(State state) {
@@ -53,14 +56,14 @@ public class Player extends Element{
         this.health = health;
     }
 
-    public String toString(){
-        return this.name + "; hp:" + this.health + "/" + this.maxHealth + ", state: " + this.state.toString() + ", amo: " + this.amo;
+    public String statsToString(){
+        return this.name + "; hp:" + this.health + "/" + this.maxHealth + ", state: " + this.state.toString() + ", ammo: " + this.ammo;
     }
 
     public static void main(String[] args) {
-        Player p1 = new Player("Patrick");
+        Player p1 = new Player(0,0,"Patrick");
         System.out.println(p1.toString());
-        p1.setAmo(p1.getAmo() - 3);
+        p1.setAmmo(p1.getAmmo() - 3);
         p1.setHealth(p1.getHealth() - 14);
         System.out.println(p1.toString());
     }

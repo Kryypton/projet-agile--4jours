@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class ZombieGame {
-    private static ArrayList<Map> everyMaps = new ArrayList<Map>();
-
+    public static final Player PLAYER = new Player(12,12,"Jambon");
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

@@ -8,17 +8,27 @@
     BORDER("\033[48;2;25;25;25m", "   ",new Info[]{Info.IMMOVABLE}),
     EXIT("\033[42m", "   ");
 */
-import java.awt.color;
+import java.util.ArrayList;
 public class Element {
     private int posX;
     private int posY;
-    private Color color;
+    private String color;
     private String symbol;
-    private Info[] infos;
+    private ArrayList<Info> infos;
 
-    public Element(int posX, int posY) {
+
+
+    public Element(int posX, int posY, String color, String symbol, ArrayList<Info> infos) {
         this.posX = posX;
         this.posY = posY;
+        this.color = color;
+        this.symbol = symbol;
+        this.infos = infos;
+    }
+
+    public Element (int posX, int posY, String color, String symbol) {
+        this(posX, posY, color, symbol, new ArrayList<Info>());
+        this.infos.add(Info.NONE);
     }
 
     public String toString() {
@@ -27,8 +37,8 @@ public class Element {
 
     public boolean isInfo(Info i) {
         boolean b = false;
-        for (int j = 0 ; j < this.infos.length ; j++) {
-            if (this.infos[j] == i)
+        for (int j = 0 ; j < this.infos.size() ; j++) {
+            if (this.infos.get(j) == i)
                 b = true;
         }
         return b;
@@ -42,7 +52,7 @@ public class Element {
         this.posY = posY;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -50,8 +60,12 @@ public class Element {
         this.symbol = symbol;
     }
 
-    public void setInfos(Info[] infos) {
-        this.infos = infos;
+    public void addInfo(Info info) {
+        this.infos.add(info);
+    }
+
+    public void addInfos(ArrayList<Info> infos) {
+        this.infos.addAll(infos);
     }
 
     public int getPosX() {
@@ -62,7 +76,7 @@ public class Element {
         return posY;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
@@ -70,7 +84,7 @@ public class Element {
         return symbol;
     }
 
-    public Info[] getInfos() {
+    public ArrayList<Info> getInfos() {
         return infos;
     }
     

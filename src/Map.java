@@ -3,31 +3,36 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Map {
+    private static ArrayList<Map> everyMaps = new ArrayList<Map>();
     private static final Scanner sc = new Scanner(System.in);
     private int levelType;
     private int xy;
-    private Square[][] map;
-    private Player p;
+    private Element[][] map;
+    private Player player;
 
     public Map(int xy, int lvl) {
         this.xy = xy;
         this.levelType = lvl;
-        this.map = new Square[xy][xy];
-        this.p = new Player(this.xy);
+        this.map = new Element[xy][xy];
+        this.player = ZombieGame.PLAYER;
     }
 
+    
+
     public Map(int xy) {
-        this(xy,0);
+        this(xy, 0);
     }
     
     public Map() {
-        this(25,25);
+        this(25);
     }
 
     public String toStringMap() {
         String str = "";
         for (int i = 0 ; i < this.xy ; i++) {
             for (int j = 0 ; j < this.xy ; j++) {
+                if (this.map[i][j] == null) str += "   ";
+                else
                 str += this.map[i][j].toString() + "\033[0m";
             }
             str += "\n";
@@ -37,28 +42,32 @@ public class Map {
     public void generateMap(int nbenemy, int nbwall, int nbutil) { 
         this.generateEnemies(nbenemy);
         this.generateWalls(nbwall);
-        this.generateUtil(nbutil);
+        //this.generateUtil(nbutil);
         for (int i = 0 ; i < this.xy ; i ++) {
             for (int j = 0 ; j < this.xy ; j++) {
                 if (i == 0 || i == this.xy-1 || j == 0 || j == this.xy-1)
-                    this.map[i][j] = Square.BORDER;
-                if (this.map[i][j] == null)
-                    this.map[i][j] = Square.NONE;
+                    this.map[i][j] = new Border(i,j);
             }
         }
         this.generateExits();
-        this.generatePlayer();
+        this.map[this.player.getPosX()][this.player.getPosY()] = this.player;
     }
-    
-    private void generatePlayer() {
-        this.map[this.p.getX()][this.p.getY()] = Square.PLAYER;
+
+    private EnnemiType getMapSpawnRate() {
+        if (this.levelType == 0) return EnnemiType.RAT;
+        if (this.levelType == 1)
+            if ((int) Math.random()*2 == 0)
+                return EnnemiType.RAT;
+            else
+                return EnnemiType.COCKROACH;
+        return EnnemiType.ZOMBIE;
     }
 
     private void generateEnemies(int nb) {
         for (int i = 1 ; i < this.xy-1 ; i++) {
             for (int j = 1 ; j < this.xy-1 ; j++) {
                 if (this.map[i][j] == null && (int) (Math.random()*100) <= nb) {
-                    this.map[i][j] = Square.ENEMY;
+                    this.map[i][j] = new Ennemi(i,j,this.getMapSpawnRate());
                 }
             }
         }
@@ -67,12 +76,12 @@ public class Map {
         for (int i = 1 ; i < xy-1 ; i++) {
             for (int j = 1 ; j < xy-1 ; j++) {
                 if (this.map[i][j] == null && Math.random()*100 <= nb) {
-                    this.map[i][j] = Square.WALL;
+                    this.map[i][j] = new Wall(i,j);
                 }
             }
         }
     }
-    private void generateUtil(int nb) {
+    /*private void generateUtil(int nb) {
         for (int i = 1 ; i < xy-1 ; i++) {
             for (int j = 1 ; j < xy-1 ; j++) {
                 if (this.map[i][j] == null && Math.random()*100 <= nb) {
@@ -80,47 +89,57 @@ public class Map {
                 }
             }
         }
-    }
+    }*/
     
     private void generateExits() {
         int exits = (int) (Math.ceil(Math.random()*4));
         List<Integer> ints = new ArrayList<Integer>();
         ints.add(0) ; ints.add(1) ; ints.add(2) ; ints.add(3);
         Collections.shuffle(ints);
+        int k;
         for (int i = 0 ; i < exits ; i++) {
-            if (ints.get(0) == 0)
-                this.map[0][(int) (Math.random()*this.xy-1)] = Square.EXIT;
-            else if (ints.get(0) == 1)
-                this.map[this.xy-1][(int) (Math.random()*this.xy-1)] = Square.EXIT;
-            else if (ints.get(0) == 2)
-                this.map[(int) (Math.random()*this.xy-1)][0] = Square.EXIT;
-            else
-                this.map[(int) (Math.random()*this.xy-1)][this.xy-1] = Square.EXIT;
+            if (ints.get(0) == 0) {
+                k = (int) (Math.random()*this.xy-1);
+                this.map[0][k] = new Exit(0,k);
+            }
+            else if (ints.get(0) == 1) {
+                k = (int) (Math.random()*this.xy-1);
+                this.map[this.xy-1][k] = new Exit(this.xy-1,k);
+            }
+            else if (ints.get(0) == 2) {
+                k = (int) (Math.random()*this.xy-1);
+                this.map[k][0] = new Exit(k,0);
+            }
+            else {
+                k = (int) (Math.random()*this.xy-1);
+                this.map[k][this.xy-1] = new Exit(k,this.xy-1);
+            }
             ints.remove(0);
         }
     }
-    public boolean checkSquareValidity(Square s, Info i) {
+    public boolean checkElementValidity(Element s, Info i) {
+        if (s == null) return false;
         if (s.isInfo(i))
             return true;
         return false;
     }
     public boolean movePlayer() {
         boolean b = true;
-        int x = this.p.getX();
-        int y = this.p.getY();
-        this.map[x][y] = Square.NONE;
+        int x = this.player.getPosX();
+        int y = this.player.getPosY();
+        this.map[x][y] = null;
         System.out.print("Direction : ");
         String movement = sc.nextLine();
-        if (movement.equals("z") && !(checkSquareValidity(this.map[this.p.getX()-1][this.p.getY()], Info.IMMOVABLE)))
-            this.p.setX(this.p.getX()-1);
-        else if (movement.equals("q") && !(checkSquareValidity(this.map[this.p.getX()][this.p.getY()-1], Info.IMMOVABLE)))
-            this.p.setY(this.p.getY()-1);
-        else if (movement.equals("s") && !(checkSquareValidity(this.map[this.p.getX()+1][this.p.getY()], Info.IMMOVABLE)))
-            this.p.setX(this.p.getX()+1);
-        else if (movement.equals("d") && !(checkSquareValidity(this.map[this.p.getX()][this.p.getY()+1], Info.IMMOVABLE)))
-            this.p.setY(this.p.getY()+1);
+        if (movement.equals("z") && !(checkElementValidity(this.map[this.player.getPosX()-1][this.player.getPosY()], Info.IMMOVABLE)))
+            this.player.setPosX(this.player.getPosX()-1);
+        else if (movement.equals("q") && !(checkElementValidity(this.map[this.player.getPosX()][this.player.getPosY()-1], Info.IMMOVABLE)))
+            this.player.setPosY(this.player.getPosY()-1);
+        else if (movement.equals("s") && !(checkElementValidity(this.map[this.player.getPosX()+1][this.player.getPosY()], Info.IMMOVABLE)))
+            this.player.setPosX(this.player.getPosX()+1);
+        else if (movement.equals("d") && !(checkElementValidity(this.map[this.player.getPosX()][this.player.getPosY()+1], Info.IMMOVABLE)))
+            this.player.setPosY(this.player.getPosY()+1);
         if (b)
-            this.map[p.getX()][p.getY()] = Square.PLAYER;
+            this.map[this.player.getPosX()][this.player.getPosY()] = this.player;
         return b;
     }
 }
