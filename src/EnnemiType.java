@@ -1,18 +1,15 @@
-public class Ennemi extends Element{
-
+public enum EnnemiType {
+    ZOMBIE(50,30,2,5), RAT(20,10,3,3), COCKROACH(5,2,3,1);
     private int health;
     private int damage;
     private int range;
     private int cost;
-    private EnnemiType type;
-    //ajouter drop, taux de drop
 
-    public Ennemi(EnnemiType type){
-        this.type = type;
-        this.health = type.getHealth();
-        this.damage = type.getDamage();
-        this.range = type.getRange();
-        this.cost = type.getCost();
+    private EnnemiType(int health, int damage, int range, int cost){
+        this.cost = cost;
+        this.range = range;
+        this.damage = damage;
+        this.health = health;
     }
 
     public int getCost() {
@@ -31,10 +28,6 @@ public class Ennemi extends Element{
         return range;
     }
 
-    public EnnemiType getType() {
-        return type;
-    }
-
     public void setCost(int cost) {
         this.cost = cost;
     }
@@ -50,12 +43,5 @@ public class Ennemi extends Element{
     public void setRange(int range) {
         this.range = range;
     }
-
-    public void setType(EnnemiType type) {
-        this.type = type;
-    }
-    
-
     
 }
-

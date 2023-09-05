@@ -1,6 +1,6 @@
 
 
-public class Player{
+public class Player extends Element{
     private final String name;
     private int maxHealth;
     private int health;
