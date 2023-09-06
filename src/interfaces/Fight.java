@@ -7,7 +7,6 @@ public class Fight {
     public Player p;
     public Ennemi e;
 
-
     public Fight(Player p, Ennemi e) {
         this.p = p;
         this.e = e;
@@ -35,5 +34,20 @@ public class Fight {
         }
         p.setHealth(p.getHealth() - damageCaused);
     }
+
+    public void startFight() {
+        this.p.getItems().forEach(item -> {
+            if (item == entity.Item.GRENADE) {
+                System.out.println("Vous avez une grenade, voulez vous l'utiliser ? (y/n)");
+                if (new java.util.Scanner(System.in).next().equals("y")) {
+                    e.setHealth(0);
+                    p.supInventory(entity.Item.GRENADE);
+                }
+                e.setHealth(0);
+                p.supInventory(entity.Item.GRENADE);
+            }
+        });
+        });
+}
 
 }
