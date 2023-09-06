@@ -4,7 +4,7 @@
 
 ### Ce que nous avons fait durant ce sprint
 Il a ici été question de perfectionner la génération aléatoire des cartes afin d'éviter de nombreux bugs précédemment présents.
-Egalement, les déplacement et certaines interactions du joueur sont désomais fonctionelles.
+Egalement, les déplacement et certaines interactions du joueur sont désormais fonctionelles.
 
 ### Ce que nous allons faire durant le prochain sprint
 Gestion des boucles de jeu et de la cohérence des étages.
