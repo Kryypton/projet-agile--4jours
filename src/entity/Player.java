@@ -17,7 +17,6 @@ public class Player extends Element {
     private int maxItem;
     private int damage;
     private int precision;
-    private final int CRITICAL = 10;
     private Score score;
     // private int ammoUsed; nombre de munitions utilisées, au bout d'un certain
     // nombre il faut recharger
@@ -172,6 +171,8 @@ public class Player extends Element {
             int i = (int)(Math.random()*11)+20;
             this.setHealth(this.getHealth()+i);
             System.out.println("Vous avez été heal de " + i + " HP.");
+            if (this.getHealth() > this.getMaxHealth())
+                this.setHealth(this.getMaxHealth());
         }
         else if (item == Item.AMO) {
             int i = (int)(Math.random()*6)+1;

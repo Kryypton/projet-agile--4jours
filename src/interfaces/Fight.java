@@ -20,17 +20,23 @@ public class Fight {
     }
 
     public void inflictDamage() {
+        String criticalOrNot = "";
         if (p.getAmmo() > 0) {
             int damageCaused = p.getDamage();
+
+            if ((int)(Math.random()*6) == 1)
+                damageCaused *= 2;
+                criticalOrNot = "COUP CRITIQUE !";
 
             e.setHealth(e.getHealth() - damageCaused);
 
             p.setAmmo(p.getAmmo() - 1);
             System.out.println("--------------------------------------------------------------------");
-            System.out.println(Color.RED_BOLD + "-" + damageCaused + " points de vie (ennemie)" + Color.RESET);
+            System.out.println(Color.RED_BOLD + criticalOrNot + "-" + damageCaused + " points de vie (ennemie)" + Color.RESET);
             System.out.println(Color.RED + "                     " + e.getType() + " a maintenant " + e.getHealth()
                     + " points de vie" + Color.RESET);
             System.out.println("--------------------------------------------------------------------");
+            criticalOrNot = "";
             Menu.wait(1500);
         } else {
             System.out.println("Vous n'avez plus de munitions ! \n");
@@ -148,7 +154,6 @@ public class Fight {
                     System.out.println(Color.GREEN + "Vous utilisez un soin" + Color.RESET);
                     System.out.println("--------------------------------------------------------------------");
                     System.out.println("Vous avez maintenant " + p.getHealth() + " points de vie");
-                    p.consommerItem(Item.HEAL);
                     Menu.wait(3000);
                     return startFight();
                 } else {
@@ -182,6 +187,22 @@ public class Fight {
                     return choiceUseItem();
                 }
             case 3:
+                Menu.cleanup();
+                if (p.countItem(Item.AMO) > 0) {
+                    System.out.println("--------------------------------------------------------------------");
+                    p.consommerItem(Item.AMO);
+                    System.out.println("--------------------------------------------------------------------");
+                    System.out.println("L'ennemi a maintenant " + e.getHealth() + " points de vie");
+                    return startFight();
+                } else {
+                    Menu.cleanup();
+                    System.out.println("--------------------------------------------------------------------");
+                    System.out.println("Vous n'avez pas de munition ! (so long mon reuf)");
+                    System.out.println("--------------------------------------------------------------------");
+                    Menu.wait(3000);
+                    return choiceUseItem();
+                }
+            case 4:
                 Menu.cleanup();
                 System.out.println("--------------------------------------------------------------------");
                 System.out.println("Vous retournez au combat");
