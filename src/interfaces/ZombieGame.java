@@ -12,7 +12,7 @@ public class ZombieGame {
 
         int enemy = 25;
         int walls = 250;
-        int utils = 1;
+        int utils = 2;
 
         Room m = new Room(30);
         
