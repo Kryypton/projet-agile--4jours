@@ -148,7 +148,7 @@ public class Fight {
         System.out.println(Color.CYAN + "                 Quel objet voulez vous utiliser ?                 "
                 + Color.RESET);
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("1 - Soin\n2 - Grenade\n3 - Retour");
+        System.out.println("1 - Soin\n2 - Grenade\n3 - Recharger\n4 - Retour");
         System.out.println("--------------------------------------------------------------------");
         System.out.print("Choix : ");
         int choice = KeyboardInstruction.saisieClavierInt();

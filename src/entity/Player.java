@@ -46,6 +46,7 @@ public class Player extends Element {
         this.addInfo(Info.UNREPLACABLE);
         initInventory();
         this.precision = 65;
+        this.addInventory(Item.KEY);
         try {
             this.score = new Score(new File("res/Score.csv"));
         } catch (FileNotFoundException e) {
