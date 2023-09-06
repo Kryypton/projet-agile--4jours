@@ -142,7 +142,6 @@ public class Fight {
                     System.out.println("--------------------------------------------------------------------");
                     System.out.println("Vous avez maintenant " + p.getHealth() + " points de vie");
                     p.consommerItem(Item.HEAL);
-                    this.haveUsedPotion = true;
                     Menu.wait(3000);
                     return startFight();
                 } else {
@@ -165,7 +164,6 @@ public class Fight {
                     System.out.println("--------------------------------------------------------------------");
                     e.setHealth(e.getHealth() - Item.GRENADE.getDamage());
                     System.out.println("L'ennemi a maintenant " + e.getHealth() + " points de vie");
-                    this.haveUsedGrenade = true;
                     p.consommerItem(Item.GRENADE);
                     return startFight();
                 } else {
