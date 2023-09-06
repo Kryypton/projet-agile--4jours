@@ -178,6 +178,8 @@ public class Player extends Element {
             int i = (int) (Math.random() * 6) + 1;
             this.setAmmo(this.getAmmo() + i);
             System.out.println("Vous avez rechargé votre arme de " + i + " munitions.");
+        } else if (item == Item.KEY) {
+            System.out.println("Vous utilisez une clé !");
         }
         System.out.println("Vous ne pouvez pas utiliser cet objet.");
     }

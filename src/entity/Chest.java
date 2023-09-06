@@ -34,7 +34,7 @@ public class Chest extends Element {
         } else if (this.item == Item.SCOPE) {
             if (player.getPrecision() < 90) {
                 System.out.println("Vous ramassez un scope et votre précision vient d'augmenter !");
-                player.setPosX(player.getPrecision() + 5);
+                player.setPrecision(player.getPrecision() + 5);
             } else
                 System.out.println("Vous ramassez un scope mais votre précision est déjà au maximum, dommage.");
             Menu.wait(3000);
