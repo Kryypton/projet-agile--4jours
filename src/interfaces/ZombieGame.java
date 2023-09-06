@@ -10,17 +10,12 @@ public class ZombieGame {
     public void start() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Dimensions : ");
-        int xy = sc.nextInt();
+        int enemy = 25;
+        int walls = 250;
+        int utils = 1;
 
-        System.out.println("Proba d'ennemis (entre 1 et 1000) : ");
-        int enemy = sc.nextInt();
-        System.out.println("Proba de murs (entre 1 et 1000) : ");
-        int walls = sc.nextInt();
-        System.out.println("Proba de bonus (entre 1 et 1000) : ");
-        int utils = sc.nextInt();
-
-        Room m = new Room(xy);
+        Room m = new Room(30);
+        
         m.generateMap(enemy, walls, utils); // 5 12 6
         String str = m.toStringMap();
         System.out.println(str);
