@@ -23,6 +23,7 @@ public class ZombieGame {
         while (game) {
             if(m.actionPlayer())
                 m.moveEnemies();
+            //Menu.cleanup();
             System.out.println(m.toStringMap());
             if(m.getPlayer().getHealth() <= 0){
                 game = false;

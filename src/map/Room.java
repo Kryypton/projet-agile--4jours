@@ -222,7 +222,7 @@ public class Room {
         if (s.isInfo(i))
             return true;
         if (s instanceof Staircase) {
-            resetToNewStage();
+            this.resetToNewStage();
             return false;
         }
         if (s.isInfo(Info.EXIT)) {
@@ -235,7 +235,7 @@ public class Room {
             //return f.startFight();
         }
         if(s instanceof Chest){
-            return ((Chest)s).useChest(player);
+            return !((Chest)s).useChest(player);
         }
         else if (s.isInfo(Info.GOBACKDOOR)) {
             this.moveBack();

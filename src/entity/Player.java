@@ -12,7 +12,17 @@ public class Player extends Element {
     private ArrayList<Item> items;
     private int maxItem;
     private int damage;
+    private int precision;
+    private final int CRITICAL = 10;
     //private int ammoUsed; nombre de munitions utilisées, au bout d'un certain nombre il faut recharger 
+
+    public int getPrecision() {
+        return precision;
+    }
+
+    public void setPrecision(int precision) {
+        this.precision = precision;
+    }
 
     public Player(int x, int y, String name) {
         super(x, y, "\033[38;2;255;200;241m", "😀 ");
@@ -26,6 +36,7 @@ public class Player extends Element {
         this.addInfo(Info.IMMOVABLE);
         this.addInfo(Info.UNREPLACABLE);
         initInventory();
+        this.precision = 65;
     }
 
     public String toString() {

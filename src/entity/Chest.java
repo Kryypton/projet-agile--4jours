@@ -19,8 +19,24 @@ public class Chest extends Element {
     }
 
     public boolean useChest(Player player){
+        if (player.countItem(Item.KEY) > 0) {
+            player.consommerItem(Item.KEY);
+        }
+        else {
+            System.out.println("Vous n'avez pas de clé pour ouvrir ce coffre.");
+            return false;
+        }
         if (this.item == Item.NONE){
             System.out.println("Ce coffre est vide...");
+            return true;
+        }
+        else if (this.item == Item.SCOPE) {
+            if (player.getPrecision() < 90) {
+                System.out.println("Vous ramassez un scope et votre précision vient d'augmenter !");
+                player.setPosX(player.getPrecision()+5);
+            }
+            else
+                System.out.println("Vous ramassez un scope mais votre précision est déjà au maximum, dommage.");
             return true;
         }
         else if (player.getMaxItem() == player.getItems().size()){
