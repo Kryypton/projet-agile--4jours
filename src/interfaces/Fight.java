@@ -24,9 +24,10 @@ public class Fight {
         if (p.getAmmo() > 0) {
             int damageCaused = p.getDamage();
 
-            if ((int) (Math.random() * 6) == 1)
+            if ((int) (Math.random() * 6) == 1) {
                 damageCaused *= 2;
-            criticalOrNot = "COUP CRITIQUE !";
+                criticalOrNot = "COUP CRITIQUE !";
+            }
 
             e.setHealth(e.getHealth() - damageCaused);
 
