@@ -29,6 +29,11 @@ public class ZombieGame {
             if(m.actionPlayer())
                 m.moveEnemies();
             System.out.println(m.toStringMap());
+            if(m.getPlayer().getHealth() == 0){
+                game = false;
+                System.out.flush();
+                System.out.println("Vous êtes mort à l'étage " + Room.levelType);
+            }
             if (Room.levelType == 6) {
                 game = false;
                 System.out.flush();

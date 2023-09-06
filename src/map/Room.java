@@ -41,6 +41,10 @@ public class Room {
         this(25);
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public String toStringMap() {
         String str = "";
         for (int i = 0; i < this.xy; i++) {
