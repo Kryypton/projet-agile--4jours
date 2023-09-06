@@ -252,7 +252,7 @@ public class Room {
         beginning = true;
         this.map = new Element[xy][xy];
         Coordinates c = Coordinates.getElemCoordinates(this.player);
-        generateMap(25,250,1);
+        generateMap(25,250,2);
         everyMaps.clear();
         coords.clear();
         this.map[c.getX()][c.getY()] = null;
