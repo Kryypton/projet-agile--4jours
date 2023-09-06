@@ -131,27 +131,6 @@ public class Score {
                 + ", nbRoomFound=" + nbRoomFound + ", nbEtage=" + nbEtage + "]";
     }
 
-    public static void main(String[] args) {
-        Score s;
-        try {
-            s = new Score(new File("res/Score.csv"));
-            System.out.println(s);
-            s.addDeath();
-            s.save();
-            System.out.println(s);
-            s.reset();
-            System.out.println(s);
-            s.addChestsOpen();
-            s.addEtage();
-            s.addMonsterKills();
-            s.addMonsterKills();
-            System.out.println(s);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     public void setNbDeath(int i) {
         this.nbDeath = i;
     }

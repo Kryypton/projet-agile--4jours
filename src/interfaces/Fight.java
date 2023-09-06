@@ -223,12 +223,4 @@ public class Fight {
         }
     }
 
-    public static void main(String[] args) {
-
-        Player p = new Player(0, 0, "Patrick");
-        Ennemi e = new Ennemi(0, 0, EnnemiType.RAT);
-        Fight f = new Fight(p, e);
-        f.startFight();
-
-    }
 }

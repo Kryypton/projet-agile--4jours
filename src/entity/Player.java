@@ -166,33 +166,22 @@ public class Player extends Element {
         }
     }
 
-    public void consommerItem(Item item){
+    public void consommerItem(Item item) {
         if (item == Item.HEAL) {
-            int i = (int)(Math.random()*11)+20;
-            this.setHealth(this.getHealth()+i);
+            int i = (int) (Math.random() * 11) + 20;
+            this.setHealth(this.getHealth() + i);
             System.out.println("Vous avez été heal de " + i + " HP.");
             if (this.getHealth() > this.getMaxHealth())
                 this.setHealth(this.getMaxHealth());
-        }
-        else if (item == Item.AMO) {
-            int i = (int)(Math.random()*6)+1;
-            this.setAmmo(this.getAmmo()+i);
+        } else if (item == Item.AMO) {
+            int i = (int) (Math.random() * 6) + 1;
+            this.setAmmo(this.getAmmo() + i);
             System.out.println("Vous avez rechargé votre arme de " + i + " munitions.");
         }
         System.out.println("Vous ne pouvez pas utiliser cet objet.");
     }
 
-    public static void main(String[] args) {
-        Player p1 = new Player(0, 0, "Patrick");
-        System.out.println(p1.toString());
-        p1.setAmmo(p1.getAmmo() - 3);
-        p1.setHealth(p1.getHealth() - 14);
-        System.out.println(p1.toString());
-        p1.afficherInventaire();
-    }
-
     public void setName(String name) {
         this.name = name;
     }
-
 }
