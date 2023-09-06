@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.io.File;
 import java.util.Random;
 
 import entity.Ennemi;
@@ -63,6 +64,13 @@ public class Fight {
             System.out.println("Vous avez : " + p.getHealth() + " points de vie");
             System.out.println("L'ennemi a : " + e.getHealth() + " points de vie");
             System.out.println("Il vous reste : " + p.getAmmo() + " munitions");
+            if (e.getType().name().toLowerCase().equals("COCKROACH".toLowerCase()))
+                System.out.println(Menu.caffardDisplay());
+            if (e.getType().name().toLowerCase().equals("RAT".toLowerCase()))
+                System.out.println(Menu.ratDisplay());
+            if (e.getType().name().toLowerCase().equals("ZOMBIE".toLowerCase()))
+                System.out.println(Menu.zombieDisplay());
+
             System.out.println("--------------------------------------------------------------------");
             System.out.println(
                     Color.CYAN + "                      Que voulez vous faire ?                      " + Color.RESET);
@@ -122,7 +130,7 @@ public class Fight {
             return false;
         } else {
             System.out.println(Color.GREEN + "Vous avez gagné" + Color.RESET);
-            if ((int)(Math.random()*2) == 1) {
+            if ((int) (Math.random() * 2) == 1) {
                 p.addInventory(e.getDrop());
                 if (!p.inventoryFull())
                     e.getDrop().youFound();
