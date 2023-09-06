@@ -2,11 +2,11 @@ package entity;
 
 import map.Element;
 
-public class Ennemi extends Element implements comparable<Ennemi> {
+public class Ennemi extends Element implements Comparable<Ennemi> {
 
     private int health;
     private int damage;
-    //private int range;
+    // private int range;
     private Item drop;
     private EnnemiType type;
     // ajouter drop, taux de drop
@@ -24,8 +24,8 @@ public class Ennemi extends Element implements comparable<Ennemi> {
             return " 🪳 ";
         if (t == EnnemiType.COCKROACH)
             return " 🐀 ";
-        //if (t == EnnemiType.ZOMBIE)
-        return " Z ";
+        // if (t == EnnemiType.ZOMBIE)
+        return "🧟 ";
     }
 
     public String toString() {
@@ -52,7 +52,6 @@ public class Ennemi extends Element implements comparable<Ennemi> {
         return type;
     }
 
-
     public void setDamage(int damage) {
         this.damage = damage;
     }
@@ -60,7 +59,6 @@ public class Ennemi extends Element implements comparable<Ennemi> {
     public void setHealth(int health) {
         this.health = health;
     }
-
 
     public void setType(EnnemiType type) {
         this.type = type;
