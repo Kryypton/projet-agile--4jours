@@ -1,6 +1,5 @@
 package interfaces;
 
-import java.io.File;
 import java.util.Random;
 
 import entity.Ennemi;
@@ -25,15 +24,16 @@ public class Fight {
         if (p.getAmmo() > 0) {
             int damageCaused = p.getDamage();
 
-            if ((int)(Math.random()*6) == 1)
+            if ((int) (Math.random() * 6) == 1)
                 damageCaused *= 2;
-                criticalOrNot = "COUP CRITIQUE !";
+            criticalOrNot = "COUP CRITIQUE !";
 
             e.setHealth(e.getHealth() - damageCaused);
 
             p.setAmmo(p.getAmmo() - 1);
             System.out.println("--------------------------------------------------------------------");
-            System.out.println(Color.RED_BOLD + criticalOrNot + "-" + damageCaused + " points de vie (ennemie)" + Color.RESET);
+            System.out.println(
+                    Color.RED_BOLD + criticalOrNot + "-" + damageCaused + " points de vie (ennemie)" + Color.RESET);
             System.out.println(Color.RED + "                     " + e.getType() + " a maintenant " + e.getHealth()
                     + " points de vie" + Color.RESET);
             System.out.println("--------------------------------------------------------------------");
