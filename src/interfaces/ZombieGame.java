@@ -16,7 +16,7 @@ public class ZombieGame {
 
         Room m = new Room(30);
         
-        m.generateMap(enemy, walls, utils); // 5 12 6
+        m.generateMap(enemy, walls, utils);
         String str = m.toStringMap();
         System.out.println(str);
         boolean game = true;

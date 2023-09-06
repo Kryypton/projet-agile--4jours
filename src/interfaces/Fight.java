@@ -116,6 +116,13 @@ public class Fight {
             return false;
         } else {
             System.out.println(Color.GREEN + "Vous avez gagné" + Color.RESET);
+            if ((int)(Math.random()*2) == 1) {
+                p.addInventory(e.getDrop());
+                if (!p.inventoryFull())
+                    e.getDrop().youFound();
+                else
+                    System.out.println("Vous avez eu un item mais vous étiez plein");
+            }
             return true;
         }
 

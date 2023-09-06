@@ -40,21 +40,8 @@ public enum Item {
         return getName() + " : " + getDesc() + " --> " + getH() + " pv, " + getDamage() + " damage.";
     }
 
-    public boolean useItem(Player p) {
-        if (this == Item.HEAL) {
-            int i = (int)(Math.random()*11)+20;
-            p.setHealth(p.getHealth()+i);
-            System.out.println("Vous avez été heal de " + i + " HP.\n Vous avez maintenant " + p.getHealth() + "HP.");
-            return true;
-        }
-        else if (this == Item.AMO) {
-            int i = (int)(Math.random()*6)+1;
-            p.setAmmo(p.getAmmo()+i);
-            System.out.println("Vous avez rechargé votre arme de " + i + " munitions.\n Vous avez maintenant " + p.getAmmo() + " munitions.");
-            return true;
-        }
-        System.out.println("Vous ne pouvez pas utiliser cet objet.");
-        return false;
+    public void youFound() {
+        System.out.println("Vous avez trouvé : " + this + ".");
     }
 
     /*
