@@ -25,7 +25,9 @@ public class Menu {
         str += "1 - Commencer une nouvelle partie \n";
         str += "2 - Explications\n";
         str += "3 - Credits\n";
-        str += "4 - Quitter\n";
+        str += "4 - Définir le nom\n";
+        str += "5 - Voir les scores\n";
+        str += "6 - Quitter\n";
         str += "--------------------------------------------------------------------\n";
 
         return str;
@@ -101,6 +103,13 @@ public class Menu {
                 choiceCredits();
                 choiced();
             case 4:
+                choiceDefName();
+                sc.nextLine();
+                choiced();
+            case 5:
+                choiceSeeScore();
+                choiced();
+            case 6:
                 choiceQuit();
                 choiced();
             default:
@@ -184,6 +193,27 @@ public class Menu {
             e.printStackTrace();
         }
         System.exit(0);
+    }
+
+    public static void choiceDefName() {
+        cleanup();
+        System.out.println("--------------------------------------------------------------------\n");
+        System.out.println(Color.CYAN + "         Vous avez choisi de définir votre nom !        " + Color.RESET);
+        System.out.println("--------------------------------------------------------------------\n");
+        System.out.println("Veuillez saisir votre nom : ");
+        String name = KeyboardInstruction.saisieClavierStr();
+        ZombieGame.PLAYER.setName(name);
+        System.out.println("Votre nom est maintenant : " + ZombieGame.PLAYER.getName());
+        Menu.wait(2500);
+    }
+
+    public static void choiceSeeScore() {
+        cleanup();
+        System.out.println("--------------------------------------------------------------------\n");
+        System.out.println(Color.CYAN + "         Vous avez choisi de voir les scores !        " + Color.RESET);
+        System.out.println("--------------------------------------------------------------------\n");
+        ZombieGame.PLAYER.getScore().display();
+        Menu.wait(5000);
     }
 
 }

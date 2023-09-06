@@ -1,4 +1,5 @@
 package entity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import utility.Info;
 import utility.Score;
 
 public class Player extends Element {
-    private final String name;
+    private String name;
     private int maxHealth;
     private int health;
     private int ammo;
@@ -18,7 +19,8 @@ public class Player extends Element {
     private int precision;
     private final int CRITICAL = 10;
     private Score score;
-    //private int ammoUsed; nombre de munitions utilisées, au bout d'un certain nombre il faut recharger 
+    // private int ammoUsed; nombre de munitions utilisées, au bout d'un certain
+    // nombre il faut recharger
 
     public Score getScore() {
         return score;
@@ -46,13 +48,11 @@ public class Player extends Element {
         initInventory();
         this.precision = 65;
         try {
-            this.score = new Score(new File("Score.csv"));
+            this.score = new Score(new File("res/Score.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-
-    
 
     public String toString() {
         return this.getColor() + this.getSymbol();
@@ -90,7 +90,7 @@ public class Player extends Element {
         return maxItem;
     }
 
-    public void initInventory(){
+    public void initInventory() {
         this.items = new ArrayList<Item>();
     }
 
@@ -101,7 +101,6 @@ public class Player extends Element {
     public void setMaxItem(int maxItem) {
         this.maxItem = maxItem;
     }
-
 
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
@@ -128,16 +127,16 @@ public class Player extends Element {
                 + ", ammo: " + this.ammo;
     }
 
-    public void addInventory(Item item){
-        if(this.items.size() < maxItem){
+    public void addInventory(Item item) {
+        if (this.items.size() < maxItem) {
             this.items.add(item);
         }
-        
+
     }
 
-    public boolean supInventory(Item item){
+    public boolean supInventory(Item item) {
         for (int i = 0; i < items.size(); i++) {
-            if(items.get(i).name().equals(item.name())){
+            if (items.get(i).name().equals(item.name())) {
                 return items.remove(items.get(i));
             }
         }
@@ -145,36 +144,35 @@ public class Player extends Element {
         return false;
     }
 
-    public int countItem(Item item){
-        int cpt=0;
-        for(Item i : items){
-            if(i.name().equals(item.name())){
+    public int countItem(Item item) {
+        int cpt = 0;
+        for (Item i : items) {
+            if (i.name().equals(item.name())) {
                 cpt++;
             }
         }
         return cpt;
     }
 
-    public void afficherInventaire(){
-        if(items.size() == 0){
+    public void afficherInventaire() {
+        if (items.size() == 0) {
             System.out.println("\n inventaire vide \n");
-        }
-        else{
+        } else {
             System.out.println("\n vous possédez : \n Clés x" + countItem(Item.KEY) + "\n Soin x" + countItem(Item.HEAL)
-            + "\n Grenade x" + countItem(Item.GRENADE) + "\n Munitions x" + countItem(Item.AMO) + "\n");
+                    + "\n Grenade x" + countItem(Item.GRENADE) + "\n Munitions x" + countItem(Item.AMO) + "\n");
         }
     }
 
-    public void consommerItem(Item item){
-        if(item.name().equals(Item.HEAL.name()) && this.health < this.maxHealth){
-            if(supInventory(item)){
-                this.health = this.health + Item.HEAL.getH(); 
-                if(this.health > this.maxHealth){ 
-                    this.health = this.health - (this.health - this.maxHealth); 
+    public void consommerItem(Item item) {
+        if (item.name().equals(Item.HEAL.name()) && this.health < this.maxHealth) {
+            if (supInventory(item)) {
+                this.health = this.health + Item.HEAL.getH();
+                if (this.health > this.maxHealth) {
+                    this.health = this.health - (this.health - this.maxHealth);
                 }
             }
-        } else if(item.name().equals(Item.AMO.name())){
-            if(supInventory(item)){
+        } else if (item.name().equals(Item.AMO.name())) {
+            if (supInventory(item)) {
                 this.ammo = this.ammo + 5;
             }
 
@@ -188,6 +186,10 @@ public class Player extends Element {
         p1.setHealth(p1.getHealth() - 14);
         System.out.println(p1.toString());
         p1.afficherInventaire();
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

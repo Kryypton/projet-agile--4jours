@@ -5,6 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+import entity.EnnemiType;
+import interfaces.Color;
+import interfaces.Menu;
+
 public class Score {
 
     private int nbDeath;
@@ -165,5 +169,20 @@ public class Score {
 
     public void setNbEtage(int i) {
         this.nbEtage = i;
+    }
+
+    public void display() {
+        Menu.cleanup();
+        System.out.println("---------------------------------------------");
+        System.out.println("Nombre de morts : " + this.nbDeath);
+        System.out.println("Nombre de monstres tués : " + this.nbMonsterKill);
+        System.out.println("Nombre de coffres ouverts : " + this.nbChestsOpen);
+        System.out.println("Nombre de salles découvertes : " + this.nbRoomFound);
+        System.out.println("Nombre d'étages parcourus : " + this.nbEtage);
+        System.out.println("---------------------------------------------");
+        System.out
+                .println(Color.CYAN + "Score global : " + this.nbMonsterKill * EnnemiType.COCKROACH.getHealth() + ""
+                        + Color.RESET);
+        System.out.println("---------------------------------------------");
     }
 }
