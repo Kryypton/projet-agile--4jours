@@ -19,6 +19,38 @@ public class Menu {
         System.out.flush();
     }
 
+    public static String zombieDisplay() {
+        File file = new File("res/acsiiArt/zombie.txt");
+        try {
+            StringBuilder str = new StringBuilder();
+            Scanner sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                str = str.append(sc.nextLine() + "\n");
+            }
+            sc.close();
+            return str.toString();
+        } catch (Exception e) {
+            System.out.println("Erreur de lecture du fichier / fichier inexistant");
+            return null;
+        }
+    }
+
+    public static String caffardDisplay() {
+        File file = new File("res/acsiiArt/caffard.txt");
+        try {
+            StringBuilder str = new StringBuilder();
+            Scanner sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                str = str.append(sc.nextLine() + "\n");
+            }
+            sc.close();
+            return str.toString();
+        } catch (Exception e) {
+            System.out.println("Erreur de lecture du fichier / fichier inexistant");
+            return null;
+        }
+    }
+
     public static String menu() {
         String str;
         str = "--------------------------------------------------------------------\n";
