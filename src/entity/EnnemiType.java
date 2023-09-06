@@ -1,23 +1,27 @@
 package entity;
 
 public enum EnnemiType {
-    ZOMBIE(50, 30, 2, 5), RAT(20, 10, 3, 3), COCKROACH(5, 2, 3, 1);
+    ZOMBIE(50, 30, Item.AMO), RAT(20, 10, Item.HEAL), COCKROACH(5, 2, Item.KEY);
 
     private int health;
     private int damage;
-    private int range;
-    private int cost;
+    //private int range;
+    private Item drop;
 
-    private EnnemiType(int health, int damage, int range, int cost) {
-        this.cost = cost;
-        this.range = range;
+    private EnnemiType(int health, int damage, Item drop) {
         this.damage = damage;
         this.health = health;
+        this.drop = drop;
     }
 
-    public int getCost() {
-        return cost;
+    public Item getDrop() {
+        return drop;
     }
+
+    public void setDrop(Item drop) {
+        this.drop = drop;
+    }
+    
 
     public int getDamage() {
         return damage;
@@ -27,13 +31,6 @@ public enum EnnemiType {
         return health;
     }
 
-    public int getRange() {
-        return range;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
 
     public void setDamage(int damage) {
         this.damage = damage;
@@ -43,8 +40,5 @@ public enum EnnemiType {
         this.health = health;
     }
 
-    public void setRange(int range) {
-        this.range = range;
-    }
 
 }

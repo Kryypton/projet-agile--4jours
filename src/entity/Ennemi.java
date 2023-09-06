@@ -6,8 +6,8 @@ public class Ennemi extends Element implements comparable<Ennemi> {
 
     private int health;
     private int damage;
-    private int range;
-    private int cost;
+    //private int range;
+    private Item drop;
     private EnnemiType type;
     // ajouter drop, taux de drop
 
@@ -16,8 +16,7 @@ public class Ennemi extends Element implements comparable<Ennemi> {
         this.type = type;
         this.health = type.getHealth();
         this.damage = type.getDamage();
-        this.range = type.getRange();
-        this.cost = type.getCost();
+        this.drop = type.getDrop();
     }
 
     public static String pickEnemySymbol(EnnemiType t) {
@@ -33,8 +32,12 @@ public class Ennemi extends Element implements comparable<Ennemi> {
         return this.getColor() + this.getSymbol();
     }
 
-    public int getCost() {
-        return cost;
+    public Item getDrop() {
+        return drop;
+    }
+
+    public void setDrop(Item drop) {
+        this.drop = drop;
     }
 
     public int getDamage() {
@@ -45,17 +48,10 @@ public class Ennemi extends Element implements comparable<Ennemi> {
         return health;
     }
 
-    public int getRange() {
-        return range;
-    }
-
     public EnnemiType getType() {
         return type;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
 
     public void setDamage(int damage) {
         this.damage = damage;
@@ -65,9 +61,6 @@ public class Ennemi extends Element implements comparable<Ennemi> {
         this.health = health;
     }
 
-    public void setRange(int range) {
-        this.range = range;
-    }
 
     public void setType(EnnemiType type) {
         this.type = type;
@@ -75,8 +68,8 @@ public class Ennemi extends Element implements comparable<Ennemi> {
 
     @Override
     public int compareTo(Ennemi o) {
-        return (this.getDamage() + this.getHealth() + this.getRange()) / 3
-                - (o.getDamage() + o.getHealth() + o.getRange()) / 3;
+        return (this.getDamage() + this.getHealth()) / 3
+                - (o.getDamage() + o.getHealth()) / 3;
     }
 
 }
