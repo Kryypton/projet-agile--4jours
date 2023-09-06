@@ -6,5 +6,6 @@ public class Exit extends Element {
         super(x, y,"\033[42m","   ");
         this.addInfo(Info.EXIT);
         this.addInfo(Info.UNREPLACABLE);
+        this.addInfo(Info.HURTFUL);
     }
 }

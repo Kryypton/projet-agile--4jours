@@ -130,7 +130,7 @@ public class Room {
         for (int i = 1 ; i < xy-1 ; i++) {
             for (int j = 1 ; j < xy-1 ; j++) {
                 if (this.map[i][j] == null && Math.random()*1000 <= nb) {
-                    this.map[i][j] = new Chest(i,j,Item.values()[(int)(Math.random()*4)]);
+                    this.map[i][j] = new Chest(i,j,Item.values()[(int)(Math.random()*Item.values().length)]);
                 }
             }
         }
@@ -228,6 +228,7 @@ public class Room {
         }
         if (s.isInfo(Info.EXIT)) {
             this.moveRoom();
+            this.player.setDamage(7);
             return false;
         }
         if(s instanceof Ennemi){

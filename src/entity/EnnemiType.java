@@ -5,7 +5,6 @@ public enum EnnemiType {
 
     private int health;
     private int damage;
-    //private int range;
     private Item drop;
 
     private EnnemiType(int health, int damage, Item drop) {

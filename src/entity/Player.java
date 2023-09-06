@@ -42,7 +42,7 @@ public class Player extends Element {
         this.ammo = 10;
         this.maxItem = 10;
         this.state = State.ALIVE;
-        this.damage = 5;
+        this.damage = 15;
         this.addInfo(Info.IMMOVABLE);
         this.addInfo(Info.UNREPLACABLE);
         initInventory();
@@ -134,6 +134,10 @@ public class Player extends Element {
 
     }
 
+    public boolean inventoryFull() {
+        return (maxItem == 10);
+    }
+
     public boolean supInventory(Item item) {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).name().equals(item.name())) {
@@ -163,20 +167,18 @@ public class Player extends Element {
         }
     }
 
-    public void consommerItem(Item item) {
-        if (item.name().equals(Item.HEAL.name()) && this.health < this.maxHealth) {
-            if (supInventory(item)) {
-                this.health = this.health + Item.HEAL.getH();
-                if (this.health > this.maxHealth) {
-                    this.health = this.health - (this.health - this.maxHealth);
-                }
-            }
-        } else if (item.name().equals(Item.AMO.name())) {
-            if (supInventory(item)) {
-                this.ammo = this.ammo + 5;
-            }
-
+    public void consommerItem(Item item){
+        if (item == Item.HEAL) {
+            int i = (int)(Math.random()*11)+20;
+            this.setHealth(this.getHealth()+i);
+            System.out.println("Vous avez été heal de " + i + " HP.");
         }
+        else if (item == Item.AMO) {
+            int i = (int)(Math.random()*6)+1;
+            this.setAmmo(this.getAmmo()+i);
+            System.out.println("Vous avez rechargé votre arme de " + i + " munitions.");
+        }
+        System.out.println("Vous ne pouvez pas utiliser cet objet.");
     }
 
     public static void main(String[] args) {
