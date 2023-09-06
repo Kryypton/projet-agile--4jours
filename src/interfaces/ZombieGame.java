@@ -23,7 +23,7 @@ public class ZombieGame {
         while (game) {
             if(m.actionPlayer())
                 m.moveEnemies();
-            //Menu.cleanup();
+            Menu.cleanup();
             System.out.println(m.toStringMap());
             if(m.getPlayer().getHealth() <= 0){
                 game = false;
@@ -34,8 +34,10 @@ public class ZombieGame {
                 game = false;
                 System.out.flush();
                 System.out.println("Voilà c'est fini");
+                
             }
         }
+        m.getPlayer().getScore().save();
         sc.close();
     }
 }

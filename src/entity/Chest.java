@@ -21,6 +21,7 @@ public class Chest extends Element {
     public boolean useChest(Player player){
         if (player.countItem(Item.KEY) > 0) {
             player.consommerItem(Item.KEY);
+            player.getScore().addChestsOpen();
         }
         else {
             System.out.println("Vous n'avez pas de clé pour ouvrir ce coffre.");

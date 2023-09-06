@@ -1,7 +1,10 @@
 package entity;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import map.Element;
 import utility.Info;
+import utility.Score;
 
 public class Player extends Element {
     private final String name;
@@ -14,7 +17,12 @@ public class Player extends Element {
     private int damage;
     private int precision;
     private final int CRITICAL = 10;
+    private Score score;
     //private int ammoUsed; nombre de munitions utilisées, au bout d'un certain nombre il faut recharger 
+
+    public Score getScore() {
+        return score;
+    }
 
     public int getPrecision() {
         return precision;
@@ -37,7 +45,14 @@ public class Player extends Element {
         this.addInfo(Info.UNREPLACABLE);
         initInventory();
         this.precision = 65;
+        try {
+            this.score = new Score(new File("Score.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
+
+    
 
     public String toString() {
         return this.getColor() + this.getSymbol();

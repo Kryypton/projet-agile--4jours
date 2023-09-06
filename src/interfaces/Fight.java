@@ -12,7 +12,7 @@ public class Fight {
     public Player p;
     public Ennemi e;
 
-    private Boolean haveTryToEsquape = false;
+    private Boolean haveTryToEscape = false;
 
     public Fight(Player p, Ennemi e) {
         this.p = p;
@@ -63,7 +63,7 @@ public class Fight {
             System.out.println("--------------------------------------------------------------------");
             System.out.println("1 - Attaquer");
             System.out.println("2 - Utiliser un objet");
-            System.out.print((this.haveTryToEsquape != true) ? "3 - Fuir\n" : "");
+            System.out.print((this.haveTryToEscape != true) ? "3 - Fuir\n" : "");
             System.out.println("--------------------------------------------------------------------");
             int choice = KeyboardInstruction.saisieClavierInt();
             switch (choice) {
@@ -74,13 +74,13 @@ public class Fight {
                     return startFight();
                 case 3:
 
-                    if (this.haveTryToEsquape == true) {
+                    if (this.haveTryToEscape == true) {
                         Menu.cleanup();
                         System.out.println(Color.RED + "Veuillez saisir un choix valide !" + Color.RESET);
                         Menu.wait(1000);
                         return startFight();
                     }
-                    this.haveTryToEsquape = true;
+                    this.haveTryToEscape = true;
                     System.out.println("--------------------------------------------------------------------");
                     System.out.println(Color.CYAN
                             + "                   Vous tenter de fuir le combat                   " + Color.RESET);

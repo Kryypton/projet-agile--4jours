@@ -194,6 +194,7 @@ public class Room {
         this.player.setPosX(xy/2);
         this.player.setPosY(xy/2);
         generateMap(25,250,1);
+        this.player.getScore().addRoomFound();
     }
 
     private void moveBack() {
@@ -232,7 +233,8 @@ public class Room {
         if(s instanceof Ennemi){
             
             Fight f = new Fight(this.player, (Ennemi)s);
-            //return f.startFight();
+            this.player.getScore().addMonsterKills();
+            return !f.startFight();
         }
         if(s instanceof Chest){
             return !((Chest)s).useChest(player);
@@ -253,6 +255,7 @@ public class Room {
         everyMaps.clear();
         coords.clear();
         this.map[c.getX()][c.getY()] = null;
+        this.player.getScore().addEtage();
     }
 
     public boolean actionPlayer() {
