@@ -25,7 +25,8 @@ public class Ennemi extends Element {
             return " 🪳 ";
         if (t == EnnemiType.COCKROACH)
             return " 🐀 ";
-        /* if (t == EnnemiType.ZOMBIE) */ return "   ";
+        //if (t == EnnemiType.ZOMBIE)
+        return " Z ";
     }
 
     public String toString() {

@@ -20,7 +20,7 @@ public class Room {
     public static ArrayList<Element[][]> everyMaps = new ArrayList<Element[][]>();
     public static ArrayList<Coordinates> coords = new ArrayList<Coordinates>();
     private static final Scanner sc = new Scanner(System.in);
-    private int levelType;
+    public static int levelType = 0;
     private int xy;
     private Element[][] map;
     private Player player;
@@ -29,7 +29,6 @@ public class Room {
 
     public Room(int xy, int lvl) {
         this.xy = xy;
-        this.levelType = lvl;
         this.map = new Element[xy][xy];
         this.player = ZombieGame.PLAYER;
     }
@@ -71,6 +70,8 @@ public class Room {
             this.map[this.player.getPosX()][this.player.getPosY()] = this.player;
         if (!beginning) {
             this.generateBackExit();
+            if ((int)(Math.random()*10) == 7)
+                generateStaircase(new Coordinates(gvbb(),(gvbb())));
         }
         beginning = false;
     }
@@ -83,9 +84,9 @@ public class Room {
     }
 
     private EnnemiType getMapSpawnRate() {
-        if (this.levelType == 0)
+        if (levelType == 0)
             return EnnemiType.RAT;
-        if (this.levelType == 1)
+        else if (levelType == 1)
             if ((int) Math.random() * 2 == 0)
                 return EnnemiType.RAT;
             else
@@ -158,6 +159,21 @@ public class Room {
         }
     }
 
+    private void generateStaircase(Coordinates c) {
+        generateAirGap(c, 5);
+        this.map[c.getX()][c.getY()] = new Staircase(c.getX(),c.getY());
+    }
+
+    private void generateAirGap(Coordinates c, int size) {
+        for (int i = c.getX()-size/2 ; i < c.getX()+size/2 ; i++) {
+            for (int j = c.getY()-size/2 ; j < c.getY()+size/2 ; j++) {
+                if (i >= 0 && i < this.xy && j >= 0 && j < this.xy && this.map[i][j] != null && !this.map[i][j].isInfo(Info.UNREPLACABLE)) {
+                    this.map[i][j] = null;
+                }
+            }
+        }
+    }
+
     private int gvbb() { //(generateValueBetweenBounds)
         int x = (int) (Math.random() * this.xy -1);
         if (x==0) return 1;
@@ -172,7 +188,7 @@ public class Room {
         this.map = new Element[xy][xy];
         this.player.setPosX(xy/2);
         this.player.setPosY(xy/2);
-        generateMap(5,25,5);
+        generateMap(25,250,1);
     }
 
     private void moveBack() {
@@ -200,6 +216,10 @@ public class Room {
             return false;
         if (s.isInfo(i))
             return true;
+        if (s instanceof Staircase) {
+            resetToNewStage();
+            return false;
+        }
         if (s.isInfo(Info.EXIT)) {
             this.moveRoom();
             return false;
@@ -211,31 +231,52 @@ public class Room {
         return false;
     }
 
-    public boolean movePlayer() {
+    public void resetToNewStage() {
+        levelType++;
+        beginning = true;
+        this.map = new Element[xy][xy];
+        Coordinates c = Coordinates.getElemCoordinates(this.player);
+        generateMap(25,250,1);
+        everyMaps.clear();
+        coords.clear();
+        this.map[c.getX()][c.getY()] = null;
+    }
+
+    public boolean actionPlayer() {
         boolean b = true;
         int x = this.player.getPosX();
         int y = this.player.getPosY();
         this.map[x][y] = null;
-        System.out.print("Direction : ");
-        String movement = sc.nextLine();
-        if (movement.equals("z")
+        System.out.print("Movement ZQSD | Inventory I : ");
+        String typing = sc.nextLine();
+        if (typing.equalsIgnoreCase("z")
                 && !(checkElementValidity(this.map[this.player.getPosX() - 1][this.player.getPosY()], Info.IMMOVABLE)))
             this.player.setPosX(this.player.getPosX() - 1);
-        else if (movement.equals("q")
+        else if (typing.equalsIgnoreCase("q")
                 && !(checkElementValidity(this.map[this.player.getPosX()][this.player.getPosY() - 1], Info.IMMOVABLE)))
             this.player.setPosY(this.player.getPosY() - 1);
-        else if (movement.equals("s")
+        else if (typing.equalsIgnoreCase("s")
                 && !(checkElementValidity(this.map[this.player.getPosX() + 1][this.player.getPosY()], Info.IMMOVABLE)))
             this.player.setPosX(this.player.getPosX() + 1);
-        else if (movement.equals("d")
+        else if (typing.equalsIgnoreCase("d")
                 && !(checkElementValidity(this.map[this.player.getPosX()][this.player.getPosY() + 1], Info.IMMOVABLE)))
             this.player.setPosY(this.player.getPosY() + 1);
-        if (b)
-            this.map[this.player.getPosX()][this.player.getPosY()] = this.player;
+        else if (typing.equalsIgnoreCase("i")) {
+            System.out.flush();
+            System.out.println("- - - - - Inventaire - - - - -");
+            System.out.println(this.player.statsToString() + "\n");
+            this.player.afficherInventaire();
+            System.out.println("Appuyez sur n'importe quelle touche pour quitter");
+            sc.nextLine();
+            sc.close();
+        }
+        else
+            b = false;
+        this.map[this.player.getPosX()][this.player.getPosY()] = this.player;
         return b;
     }
 
-    public void refreshEnemyMovement() {
+    public void refreshEnemytyping() {
         for (int i = 0 ; i < this.xy ; i++) {
             for (int j = 0 ; j < this.xy ; j++) {
                 if (this.map[i][j] instanceof Ennemi) {
@@ -275,6 +316,6 @@ public class Room {
                 }
             }
         }
-        this.refreshEnemyMovement();
+        this.refreshEnemytyping();
     }
 }

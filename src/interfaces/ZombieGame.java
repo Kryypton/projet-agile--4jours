@@ -26,10 +26,14 @@ public class ZombieGame {
         System.out.println(str);
         boolean game = true;
         while (game) {
-            m.movePlayer();
-            m.moveEnemies();
+            if(m.actionPlayer())
+                m.moveEnemies();
             System.out.println(m.toStringMap());
-            game = true;
+            if (Room.levelType == 6) {
+                game = false;
+                System.out.flush();
+                System.out.println("Voilà c'est fini");
+            }
         }
         sc.close();
     }
