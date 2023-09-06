@@ -49,6 +49,7 @@ public class PlayerTest {
         player.addInventory(Item.GRENADE);
         player.addInventory(Item.GRENADE);
         assertEquals(2, player.countItem(Item.GRENADE));
+        assertEquals(0, player.countItem(Item.HEAL));
     }
 
     @Test
