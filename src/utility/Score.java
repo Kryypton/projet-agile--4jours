@@ -86,6 +86,7 @@ public class Score {
         return this.nbEtage;
     }
 
+    @SuppressWarnings("unused")
     public Boolean save() {
         try {
             File file = new File("res/Score.csv");
