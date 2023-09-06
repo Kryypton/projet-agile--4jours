@@ -12,8 +12,6 @@ public class Fight {
     public Player p;
     public Ennemi e;
 
-    private Boolean haveUsedPotion = false;
-    private Boolean haveUsedGrenade = false;
     private Boolean haveTryToEsquape = false;
 
     public Fight(Player p, Ennemi e) {
