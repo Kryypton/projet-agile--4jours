@@ -228,7 +228,7 @@ public class Room {
         }
         if (s.isInfo(Info.EXIT)) {
             this.moveRoom();
-            this.player.setDamage(7);
+            this.player.setHealth(player.getHealth()-7);
             return false;
         }
         if(s instanceof Ennemi){
