@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import entity.Item;
 import entity.Player;
@@ -18,10 +17,9 @@ public class PlayerTest {
     public ArrayList<Item> compare;
     public Item cle2;
 
-    @BeforeEach
-    public void initialisation(){
-        this.compare = new ArrayList<Item>();
+    public PlayerTest(){
         this.player = new Player(10, 10, "Player 1");
+        this.compare = new ArrayList<Item>();
         this.cle = Item.KEY;
         this.cle2 = Item.KEY;
     }
@@ -40,6 +38,8 @@ public class PlayerTest {
 
     @Test
     public void supInventoryTest(){
+        player.addInventory(cle);
+        assertEquals(1, player.countItem(Item.KEY));
         assertTrue(player.supInventory(cle));
         assertFalse(player.supInventory(Item.HEAL));
     }
@@ -48,7 +48,8 @@ public class PlayerTest {
     public void countItemTest(){
         player.addInventory(Item.GRENADE);
         player.addInventory(Item.GRENADE);
-        assertEquals(2, Item.GRENADE);
+        assertEquals(2, player.countItem(Item.GRENADE));
+        assertEquals(0, player.countItem(Item.HEAL));
     }
 
     @Test
