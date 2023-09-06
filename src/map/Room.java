@@ -89,13 +89,39 @@ public class Room {
     }
 
     private EnnemiType getMapSpawnRate() {
-        if (levelType == 0)
+        int i;
+        if (levelType == 0) {
             return EnnemiType.RAT;
-        else if (levelType == 1)
-            if ((int) Math.random() * 2 == 0)
+        }
+        else if (levelType == 1) {
+            if ((int) Math.random() * 2 == 0) {
                 return EnnemiType.RAT;
-            else
+            }
+            else {
                 return EnnemiType.COCKROACH;
+            }
+        }
+        else if (levelType == 2) {
+            i = (int) (Math.random() * 3);
+            if (i == 0) {
+                return EnnemiType.RAT;
+            }
+            else if (i == 1) {
+                return EnnemiType.COCKROACH;
+            }
+            else {
+                return EnnemiType.ZOMBIE;
+            }
+        }
+        else if (levelType == 3) {
+            i = (int) (Math.random() * 3);
+            if (i == 0) {
+                return EnnemiType.COCKROACH;
+            }
+            else {
+                return EnnemiType.ZOMBIE;
+            }
+        }
         return EnnemiType.ZOMBIE;
     }
 
@@ -193,7 +219,7 @@ public class Room {
         this.map = new Element[xy][xy];
         this.player.setPosX(xy/2);
         this.player.setPosY(xy/2);
-        generateMap(25,250,1);
+        generateMap(25,250,2);
         this.player.getScore().addRoomFound();
     }
 

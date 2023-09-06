@@ -32,7 +32,7 @@ public class ZombieGame {
                 Menu.cleanup();
                 System.out.println("Vous êtes mort à l'étage " + Room.levelType + "\n nullos. :3");
             }
-            if (Room.levelType == 6) {
+            if (Room.levelType == 5) {
                 game = false;
                 Menu.cleanup();
                 System.out.println("---------------------------------------------");

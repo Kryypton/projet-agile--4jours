@@ -3,7 +3,6 @@ package interfaces;
 import java.util.Random;
 
 import entity.Ennemi;
-import entity.EnnemiType;
 import entity.Item;
 import entity.Player;
 
