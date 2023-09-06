@@ -6,7 +6,15 @@ import java.util.Scanner;
 public class Menu {
     public static Scanner sc = new Scanner(System.in);
 
-    private static void cleanup() {
+    public static void wait(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void cleanup() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
