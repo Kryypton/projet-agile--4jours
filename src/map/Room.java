@@ -272,7 +272,6 @@ public class Room {
             this.player.afficherInventaire();
             System.out.println("Appuyez sur n'importe quelle touche pour quitter");
             sc.nextLine();
-            sc.close();
         }
         else
             b = false;
