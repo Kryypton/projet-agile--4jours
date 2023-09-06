@@ -13,6 +13,14 @@ public class Score {
     private int nbRoomFound;
     private int nbEtage;
 
+    public Score() {
+        this.nbDeath = 0;
+        this.nbMonsterKill = 0;
+        this.nbChestsOpen = 0;
+        this.nbRoomFound = 0;
+        this.nbEtage = 0;
+    }
+
     public Score(File csvFile) throws FileNotFoundException {
         Scanner sc = new Scanner(csvFile);
         sc.useDelimiter(",");
@@ -129,5 +137,25 @@ public class Score {
             e.printStackTrace();
         }
 
+    }
+
+    public void setNbDeath(int i) {
+        this.nbDeath = i;
+    }
+
+    public void setNbMonsterKill(int i) {
+        this.nbMonsterKill = i;
+    }
+
+    public void setNbChestsOpen(int i) {
+        this.nbChestsOpen = i;
+    }
+
+    public void setNbRoomFound(int i) {
+        this.nbRoomFound = i;
+    }
+
+    public void setNbEtage(int i) {
+        this.nbEtage = i;
     }
 }
