@@ -1,22 +1,23 @@
 package test.utility;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import utility.Score;
 
 import static org.junit.Assert.assertEquals;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 
 public class ScoreTest {
 
     public Score score;
 
-    @BeforeEach
-    public void setUp() {
-        this.score = new Score();
+    public ScoreTest() {
+        try {
+            this.score = new Score(new File("res/tmp/ScoreTest.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -26,12 +27,12 @@ public class ScoreTest {
 
     @Test
     public void getNbMonsterKillTest() {
-        assertEquals(11, this.score.getNbMonsterKills());
+        assertEquals(0, this.score.getNbMonsterKills());
     }
 
     @Test
     public void getNbChestsOpenTest() {
-        assertEquals(2, this.score.getNbChestsOpen());
+        assertEquals(0, this.score.getNbChestsOpen());
     }
 
     @Test
@@ -41,22 +42,27 @@ public class ScoreTest {
 
     @Test
     public void getNbEtageTest() {
-        assertEquals(1, this.score.getNbEtage());
+        assertEquals(0, this.score.getNbEtage());
     }
 
     @Test
     public void saveTest() {
+        try {
+            this.score = new Score(new File("res/tmp/ScoreTest.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         this.score.setNbDeath(1);
         this.score.setNbMonsterKill(2);
         this.score.setNbChestsOpen(3);
         this.score.setNbRoomFound(4);
         this.score.setNbEtage(5);
         this.score.save();
-        assertEquals(4, this.score.getNbDeath());
-        assertEquals(13, this.score.getNbMonsterKills());
-        assertEquals(5, this.score.getNbChestsOpen());
+        assertEquals(1, this.score.getNbDeath());
+        assertEquals(2, this.score.getNbMonsterKills());
+        assertEquals(3, this.score.getNbChestsOpen());
         assertEquals(4, this.score.getNbRoomFound());
-        assertEquals(6, this.score.getNbEtage());
+        assertEquals(5, this.score.getNbEtage());
     }
 
     @Test
