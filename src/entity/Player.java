@@ -39,7 +39,7 @@ public class Player extends Element {
         this.name = name;
         this.maxHealth = 100;
         this.health = 100;
-        this.ammo = 10;
+        this.ammo = 25;
         this.maxItem = 10;
         this.state = State.ALIVE;
         this.damage = 15;
