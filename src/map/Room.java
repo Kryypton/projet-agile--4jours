@@ -96,7 +96,7 @@ public class Room {
     private void generateEnemies(int nb) {
         for (int i = 1; i < this.xy - 1; i++) {
             for (int j = 1; j < this.xy - 1; j++) {
-                if (this.map[i][j] == null && (int) (Math.random() * 100) <= nb) {
+                if (this.map[i][j] == null && (int) (Math.random() * 1000) <= nb) {
                     this.map[i][j] = new Ennemi(i, j, this.getMapSpawnRate());
                 }
             }
@@ -106,7 +106,7 @@ public class Room {
     private void generateWalls(int nb) {
         for (int i = 1; i < xy - 1; i++) {
             for (int j = 1; j < xy - 1; j++) {
-                if (this.map[i][j] == null && Math.random() * 100 <= nb) {
+                if (this.map[i][j] == null && Math.random() * 1000 <= nb) {
                     this.map[i][j] = new Wall(i, j);
                 }
             }
@@ -123,7 +123,7 @@ public class Room {
     private void generateUtil(int nb) {
         for (int i = 1 ; i < xy-1 ; i++) {
             for (int j = 1 ; j < xy-1 ; j++) {
-                if (this.map[i][j] == null && Math.random()*100 <= nb) {
+                if (this.map[i][j] == null && Math.random()*1000 <= nb) {
                     this.map[i][j] = new Chest(i,j,Item.values()[(int)(Math.random()*4)]);
                 }
             }
