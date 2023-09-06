@@ -42,7 +42,7 @@ public class Player extends Element {
         this.ammo = 10;
         this.maxItem = 10;
         this.state = State.ALIVE;
-        this.damage = 5;
+        this.damage = 15;
         this.addInfo(Info.IMMOVABLE);
         this.addInfo(Info.UNREPLACABLE);
         initInventory();
