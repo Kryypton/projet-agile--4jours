@@ -21,9 +21,9 @@ public class Ennemi extends Element implements Comparable<Ennemi> {
 
     public static String pickEnemySymbol(EnnemiType t) {
         if (t == EnnemiType.RAT)
-            return " 🪳 ";
-        if (t == EnnemiType.COCKROACH)
             return " 🐀 ";
+        if (t == EnnemiType.COCKROACH)
+            return " 🪳 ";
         // if (t == EnnemiType.ZOMBIE)
         return "🧟 ";
     }

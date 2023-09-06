@@ -35,6 +35,22 @@ public class Menu {
         }
     }
 
+    public static String ratDisplay() {
+        File file = new File("res/acsiiArt/rat1.txt");
+        try {
+            StringBuilder str = new StringBuilder();
+            Scanner sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                str = str.append(sc.nextLine() + "\n");
+            }
+            sc.close();
+            return str.toString();
+        } catch (Exception e) {
+            System.out.println("Erreur de lecture du fichier / fichier inexistant");
+            return null;
+        }
+    }
+
     public static String caffardDisplay() {
         File file = new File("res/acsiiArt/caffard.txt");
         try {

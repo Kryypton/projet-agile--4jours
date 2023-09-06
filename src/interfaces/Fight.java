@@ -58,8 +58,12 @@ public class Fight {
             System.out.println("Vous avez : " + p.getHealth() + " points de vie");
             System.out.println("L'ennemi a : " + e.getHealth() + " points de vie");
             System.out.println("Il vous reste : " + p.getAmmo() + " munitions");
-            File file = new File("res/acsiiArt");
-            StringBuilder sb = new StringBuilder();
+            if (e.getType().name().toLowerCase().equals("COCKROACH".toLowerCase()))
+                System.out.println(Menu.caffardDisplay());
+            if (e.getType().name().toLowerCase().equals("RAT".toLowerCase()))
+                System.out.println(Menu.ratDisplay());
+            if (e.getType().name().toLowerCase().equals("ZOMBIE".toLowerCase()))
+                System.out.println(Menu.zombieDisplay());
 
             System.out.println("--------------------------------------------------------------------");
             System.out.println(
