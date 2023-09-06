@@ -20,6 +20,7 @@ public class Player extends Element {
         this.maxHealth = 100;
         this.health = 100;
         this.ammo = 10;
+        this.maxItem = 10;
         this.state = State.ALIVE;
         this.addInfo(Info.IMMOVABLE);
         initInventory();
@@ -139,9 +140,9 @@ public class Player extends Element {
     public void consommerItem(Item item){
         if(item.name().equals(Item.HEAL.name()) && this.health < this.maxHealth){
             if(supInventory(item)){
-                this.health = this.health + Item.HEAL.getH();
-                if(this.health > this.maxHealth){
-                    this.health = this.health - (this.maxHealth - this.health);
+                this.health = this.health + Item.HEAL.getH(); 
+                if(this.health > this.maxHealth){ 
+                    this.health = this.health - (this.health - this.maxHealth); 
                 }
             }
         } else if(item.name().equals(Item.AMO.name())){
