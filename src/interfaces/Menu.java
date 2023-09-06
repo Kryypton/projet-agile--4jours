@@ -37,6 +37,7 @@ public class Menu {
                 System.out.println(str.toString());
                 Thread.sleep(150);
                 cleanup();
+                sc.close();
             } catch (Exception e) {
                 System.out.println("Erreur de lecture du fichier / fichier inexistant");
             }
@@ -49,6 +50,7 @@ public class Menu {
                 System.out.println(str.toString());
                 Thread.sleep(500);
                 cleanup();
+                sc.close();
             } catch (Exception e) {
                 System.out.println("Erreur de lecture du fichier / fichier inexistant");
             }

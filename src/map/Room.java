@@ -96,7 +96,7 @@ public class Room {
     private void generateEnemies(int nb) {
         for (int i = 1; i < this.xy - 1; i++) {
             for (int j = 1; j < this.xy - 1; j++) {
-                if (this.map[i][j] == null && (int) (Math.random() * 100) <= nb) {
+                if (this.map[i][j] == null && (Math.random() * 100) <= nb) {
                     this.map[i][j] = new Ennemi(i, j, this.getMapSpawnRate());
                 }
             }

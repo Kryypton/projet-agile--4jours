@@ -24,10 +24,13 @@ public class ZombieGame {
         m.generateMap(enemy, walls, utils); // 5 12 6
         String str = m.toStringMap();
         System.out.println(str);
-        while (true) {
+        boolean game = true;
+        while (game) {
             m.movePlayer();
             m.moveEnemies();
             System.out.println(m.toStringMap());
+            game = true;
         }
+        sc.close();
     }
 }
