@@ -21,6 +21,14 @@ public class Score {
         this.nbEtage = 0;
     }
 
+    public Score(int nbDeath, int nbMonsterKill, int nbChestsOpen, int nbRoomFound, int nbEtage) {
+        this.nbDeath = nbDeath;
+        this.nbMonsterKill = nbMonsterKill;
+        this.nbChestsOpen = nbChestsOpen;
+        this.nbRoomFound = nbRoomFound;
+        this.nbEtage = nbEtage;
+    }
+
     public Score(File csvFile) throws FileNotFoundException {
         Scanner sc = new Scanner(csvFile);
         sc.useDelimiter(",");

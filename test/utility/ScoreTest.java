@@ -13,11 +13,7 @@ public class ScoreTest {
     public Score score;
 
     public ScoreTest() {
-        try {
-            this.score = new Score(new File("res/tmp/ScoreTest.csv"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        this.score = new Score(3, 0, 10, 8, 0);
     }
 
     @Test
@@ -32,12 +28,12 @@ public class ScoreTest {
 
     @Test
     public void getNbChestsOpenTest() {
-        assertEquals(0, this.score.getNbChestsOpen());
+        assertEquals(10, this.score.getNbChestsOpen());
     }
 
     @Test
     public void getNbRoomFoundTest() {
-        assertEquals(0, this.score.getNbRoomFound());
+        assertEquals(8, this.score.getNbRoomFound());
     }
 
     @Test
@@ -47,22 +43,25 @@ public class ScoreTest {
 
     @Test
     public void saveTest() {
+        Score score2;
         try {
-            this.score = new Score(new File("res/tmp/ScoreTest.csv"));
+            score2 = new Score(new File("res/tmp/ScoreTest.csv"));
+            assertEquals(10, score2.getNbDeath());
+            score2.setNbDeath(1);
+            score2.setNbMonsterKill(2);
+            score2.setNbChestsOpen(3);
+            score2.setNbRoomFound(4);
+            score2.setNbEtage(5);
+            score2.save();
+            assertEquals(1, score2.getNbDeath());
+            assertEquals(2, score2.getNbMonsterKills());
+            assertEquals(3, score2.getNbChestsOpen());
+            assertEquals(4, score2.getNbRoomFound());
+            assertEquals(5, score2.getNbEtage());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        this.score.setNbDeath(1);
-        this.score.setNbMonsterKill(2);
-        this.score.setNbChestsOpen(3);
-        this.score.setNbRoomFound(4);
-        this.score.setNbEtage(5);
-        this.score.save();
-        assertEquals(1, this.score.getNbDeath());
-        assertEquals(2, this.score.getNbMonsterKills());
-        assertEquals(3, this.score.getNbChestsOpen());
-        assertEquals(4, this.score.getNbRoomFound());
-        assertEquals(5, this.score.getNbEtage());
+
     }
 
     @Test
@@ -77,7 +76,7 @@ public class ScoreTest {
 
     @Test
     public void toStringTest() {
-        assertEquals("Score [nbDeath=3, nbMonsterKill=11, nbChestsOpen=2, nbRoomFound=0, nbEtage=1]",
+        assertEquals("Score [nbDeath=3, nbMonsterKill=0, nbChestsOpen=10, nbRoomFound=8, nbEtage=0]",
                 this.score.toString());
     }
 }
