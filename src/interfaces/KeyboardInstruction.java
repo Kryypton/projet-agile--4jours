@@ -38,9 +38,4 @@ public class KeyboardInstruction {
             return saisieClavierInt();
         }
     }
-
-    public static void writeAndWait(String s) throws InterruptedException {
-        System.out.print(s);
-        Thread.sleep(2000);
-    }
 }
