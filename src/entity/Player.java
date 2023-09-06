@@ -174,12 +174,16 @@ public class Player extends Element {
             System.out.println("Vous avez été heal de " + i + " HP.");
             if (this.getHealth() > this.getMaxHealth())
                 this.setHealth(this.getMaxHealth());
+            this.supInventory(Item.HEAL);
         } else if (item == Item.AMO) {
             int i = (int) (Math.random() * 6) + 1;
             this.setAmmo(this.getAmmo() + i);
+            this.supInventory(Item.AMO);
             System.out.println("Vous avez rechargé votre arme de " + i + " munitions.");
         } else if (item == Item.KEY) {
             System.out.println("Vous utilisez une clé !");
+            this.supInventory(Item.KEY);
+
         }
         System.out.println("Vous ne pouvez pas utiliser cet objet.");
     }
