@@ -5,7 +5,7 @@ import entity.Player;
 import map.Room;
 
 public class ZombieGame {
-    public static final Player PLAYER = new Player(12, 12, "Jambon");
+    public static final Player PLAYER = new Player(15, 15, "Jambon");
 
     public void start() {
         Scanner sc = new Scanner(System.in);
@@ -13,11 +13,11 @@ public class ZombieGame {
         System.out.println("Dimensions : ");
         int xy = sc.nextInt();
 
-        System.out.println("Pourcentage d'ennemis : ");
+        System.out.println("Proba d'ennemis (entre 1 et 1000) : ");
         int enemy = sc.nextInt();
-        System.out.println("Pourcentage de murs : ");
+        System.out.println("Proba de murs (entre 1 et 1000) : ");
         int walls = sc.nextInt();
-        System.out.println("Pourcentage de bonus : ");
+        System.out.println("Proba de bonus (entre 1 et 1000) : ");
         int utils = sc.nextInt();
 
         Room m = new Room(xy);
