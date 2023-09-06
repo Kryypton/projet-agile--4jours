@@ -2,7 +2,7 @@ package entity;
 
 import map.Element;
 
-public class Ennemi extends Element {
+public class Ennemi extends Element implements comparable<Ennemi> {
 
     private int health;
     private int damage;
@@ -71,6 +71,12 @@ public class Ennemi extends Element {
 
     public void setType(EnnemiType type) {
         this.type = type;
+    }
+
+    @Override
+    public int compareTo(Ennemi o) {
+        return (this.getDamage() + this.getHealth() + this.getRange()) / 3
+                - (o.getDamage() + o.getHealth() + o.getRange()) / 3;
     }
 
 }
