@@ -21,6 +21,8 @@ public class ZombieGame {
         System.out.println(str);
         boolean game = true;
         while (game) {
+            System.out
+                    .println("---------------------------------------------------------------------------------------");
             if (m.actionPlayer())
                 m.moveEnemies();
             Menu.cleanup();

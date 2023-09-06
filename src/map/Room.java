@@ -283,8 +283,18 @@ public class Room {
             System.out.println("- - - - - Inventaire - - - - -");
             System.out.println(this.player.statsToString() + "\n");
             this.player.afficherInventaire();
-            System.out.println("Appuyez sur n'importe quelle touche pour quitter");
-            sc.nextLine();
+            System.out.println("Appuyez sur H pour vous soigner, R pour recharger n'importe quelle touche pour quitter");
+            typing = sc.nextLine();
+            if (typing.equalsIgnoreCase("H"))
+                if (this.player.countItem(Item.HEAL) > 0)
+                    this.player.consommerItem(Item.HEAL);
+                else
+                    System.out.println("Vous n'avez pas de soin.");
+            else if (typing.equalsIgnoreCase("R"))
+                if (this.player.countItem(Item.AMO) > 0)
+                    this.player.consommerItem(Item.AMO);
+                else
+                    System.out.println("Vous n'avez pas de munitions.");
         }
         else
             b = false;
