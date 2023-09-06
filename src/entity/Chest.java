@@ -18,16 +18,21 @@ public class Chest extends Element {
         this.item = item;
     }
 
-    public String useChest(Player player){
-        if (this.item==null) return "Ce coffre est vide...";
+    public boolean useChest(Player player){
+        if (this.item == Item.NONE){
+            System.out.println("Ce coffre est vide...");
+            return true;
+        }
         else if (player.getMaxItem() == player.getItems().size()){
-            return "Votre inventaire est plein...";
+            System.out.println("Votre inventaire est plein...");
+            return false;
         }
         else {
             player.addInventory(this.getItem());
             String itemName = this.getItem().name();
             this.setItem(null);
-            return "Vous avez obtenu: "+itemName+" !";
+            System.out.println("Vous avez obtenu: "+itemName+" !");
+            return true;
         }
     }
 

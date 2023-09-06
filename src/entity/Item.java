@@ -4,7 +4,8 @@ public enum Item {
     KEY(0, 0, "key", "ouvre un coffre"),
     HEAL(10, 0, "heal", "permet de recupérer des pv"),
     GRENADE(0, 50, "grenade", "inflige beaucoup de dégats"),
-    AMO(0, 0, "amo", "donne des munitions supplémentaires");
+    AMO(0, 0, "amo", "donne des munitions supplémentaires"),
+    NONE(0,0,"rien", "");
 
     private final int H;
     private final int DAMAGE;

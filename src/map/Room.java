@@ -13,6 +13,7 @@ import entity.EnnemiType;
 import entity.Item;
 import entity.Player;
 import entity.Chest;
+import interfaces.Fight;
 import interfaces.ZombieGame;
 
 public class Room {
@@ -227,6 +228,14 @@ public class Room {
         if (s.isInfo(Info.EXIT)) {
             this.moveRoom();
             return false;
+        }
+        if(s instanceof Ennemi){
+            
+            Fight f = new Fight(this.player, (Ennemi)s);
+            //return f.startFight();
+        }
+        if(s instanceof Chest){
+            return ((Chest)s).useChest(player);
         }
         else if (s.isInfo(Info.GOBACKDOOR)) {
             this.moveBack();
