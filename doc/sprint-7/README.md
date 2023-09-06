@@ -3,10 +3,11 @@
 ## Démo + Planification du sprint suivant
 
 ### Ce que nous avons fait durant ce sprint
-Durant ce sprint, le groupe s'est attelé à la gestion des scores ce qui implique la lecture et écriture dans des fichiers. Les combats lors de la rencontre avec un ennemi ainsi que les coffres ont aussi été travaillés.
+Rendre fonctionel et cohérent le passage d'une salle a présenté des difficultés nécessitant de repousser cette tâche au sprint suivant. Les combats lors de la rencontre avec un ennemi ainsi que les coffres ont aussi été travaillés.
 
 ### Ce que nous allons faire durant le prochain sprint
-Finir la gestion des combats. Comparaison des ennemis et interface.
+Finir la gestion des combats, établir le comportement des ennemis.
+
 ## Rétrospective
 
 ### Sur quoi avons nous butté ?
