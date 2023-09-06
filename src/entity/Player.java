@@ -21,6 +21,7 @@ public class Player extends Element {
         this.health = 100;
         this.ammo = 10;
         this.state = State.ALIVE;
+        this.damage = 5;
         this.addInfo(Info.IMMOVABLE);
         initInventory();
     }

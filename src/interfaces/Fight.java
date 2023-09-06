@@ -7,6 +7,12 @@ public class Fight {
     public Player p;
     public Ennemi e;
 
+
+    public Fight(Player p, Ennemi e) {
+        this.p = p;
+        this.e = e;
+    }
+
     public void inflictDamage() {
         if (p.getAmmo() < 0) {
 
