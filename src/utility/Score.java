@@ -161,8 +161,9 @@ public class Score {
         System.out.println("Nombre d'étages parcourus : " + this.nbEtage);
         System.out.println("---------------------------------------------");
         System.out
-                .println(Color.CYAN + "Score global : " + this.nbMonsterKill * EnnemiType.COCKROACH.getHealth() + ""
-                        + Color.RESET);
+                .println(
+                        Color.CYAN_BOLD + "Score global : " + this.nbMonsterKill * EnnemiType.COCKROACH.getHealth() + ""
+                                + Color.RESET);
         System.out.println("---------------------------------------------");
     }
 }

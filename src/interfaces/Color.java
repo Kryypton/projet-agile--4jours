@@ -9,6 +9,7 @@ public class Color {
     public static final String BLUE = "\033[48;2;0;0;255m";
     public static final String PURPLE = "\033[48;2;255;0;255m";
     public static final String CYAN = "\033[48;2;0;255;255m";
+    public static final String CYAN_BOLD = "\033[48;2;0;255;255;1m";
     public static final String WHITE = "\033[48;2;255;255;255m";
     public static final String BLACK_BOLD = "\033[48;2;0;0;0;1m";
     public static final String RED_BOLD = "\033[48;2;255;0;0;1m";

@@ -128,7 +128,7 @@ public class Menu {
         // cliquez sur entré pour continuer ...
         System.out.println(welcome());
         System.out.println(
-                Color.CYAN + "              >>> Appuyez sur entrée pour continuer <<<             " + Color.RESET);
+                Color.CYAN_BOLD + "              >>> Appuyez sur entrée pour continuer <<<             " + Color.RESET);
         sc.nextLine();
         choiced();
     }
@@ -137,7 +137,7 @@ public class Menu {
         cleanup();
         System.out.println("--------------------------------------------------------------------");
         System.out.println(
-                Color.CYAN + "           Veuillez choisir l'une des options ci-dessous :          " + Color.RESET);
+                Color.CYAN_BOLD + "           Veuillez choisir l'une des options ci-dessous :          " + Color.RESET);
         System.out.println(menu());
         int choice = KeyboardInstruction.saisieClavierInt();
         switch (choice) {
@@ -171,7 +171,7 @@ public class Menu {
         cleanup();
         System.out.println("--------------------------------------------------------------------");
         System.out
-                .println(Color.CYAN + "         Vous avez choisi de commencer une nouvelle partie !        "
+                .println(Color.CYAN_BOLD + "         Vous avez choisi de commencer une nouvelle partie !        "
                         + Color.RESET);
         System.out.println("--------------------------------------------------------------------");
         try {
@@ -187,7 +187,8 @@ public class Menu {
         cleanup();
         File file = new File("res/text/explain.txt");
         System.out.println("--------------------------------------------------------------------");
-        System.out.println(Color.CYAN + "         Vous avez choisi de lire les explications !        " + Color.RESET);
+        System.out.println(
+                Color.CYAN_BOLD + "         Vous avez choisi de lire les explications !        " + Color.RESET);
         System.out.println("--------------------------------------------------------------------");
         try {
             Scanner sc = new Scanner(file);
@@ -196,7 +197,8 @@ public class Menu {
             }
             System.out.println("--------------------------------------------------------------------");
             System.out.println(
-                    Color.CYAN + "               Appuyez sur entrée pour continuer ...                " + Color.RESET);
+                    Color.CYAN_BOLD + "               Appuyez sur entrée pour continuer ...                "
+                            + Color.RESET);
             Menu.sc.nextLine();
             sc.close();
         } catch (Exception e) {
@@ -209,7 +211,7 @@ public class Menu {
         File file = new File("res/text/credits.txt");
         System.out.println("--------------------------------------------------------------------");
         System.out.println(
-                Color.CYAN + "                         Voici les crédits !                        " + Color.RESET);
+                Color.CYAN_BOLD + "                         Voici les crédits !                        " + Color.RESET);
         System.out.println("--------------------------------------------------------------------");
         try {
             Scanner sc = new Scanner(file);
@@ -219,7 +221,8 @@ public class Menu {
             }
             System.out.println("--------------------------------------------------------------------");
             System.out.println(
-                    Color.CYAN + "               Appuyez sur entrée pour continuer ...               " + Color.RESET);
+                    Color.CYAN_BOLD + "               Appuyez sur entrée pour continuer ...               "
+                            + Color.RESET);
             Menu.sc.nextLine();
             sc.close();
         } catch (Exception e) {
@@ -246,7 +249,7 @@ public class Menu {
     public static void choiceDefName() {
         cleanup();
         System.out.println("--------------------------------------------------------------------");
-        System.out.println(Color.CYAN + "         Vous avez choisi de définir votre nom !        " + Color.RESET);
+        System.out.println(Color.CYAN_BOLD + "         Vous avez choisi de définir votre nom !        " + Color.RESET);
         System.out.println("--------------------------------------------------------------------");
         System.out.println("Veuillez saisir votre nom : ");
         String name = KeyboardInstruction.saisieClavierStr();
@@ -258,7 +261,7 @@ public class Menu {
     public static void choiceSeeScore() {
         cleanup();
         System.out.println("--------------------------------------------------------------------");
-        System.out.println(Color.CYAN + "         Vous avez choisi de voir les scores !        " + Color.RESET);
+        System.out.println(Color.CYAN_BOLD + "         Vous avez choisi de voir les scores !        " + Color.RESET);
         System.out.println("--------------------------------------------------------------------");
         ZombieGame.PLAYER.getScore().display();
         Menu.wait(5000);

@@ -15,7 +15,7 @@ public class ZombieGame {
         int utils = 2;
 
         Room m = new Room(30);
-        
+
         m.generateMap(enemy, walls, utils);
         String str = m.toStringMap();
         System.out.println(str);
@@ -36,7 +36,7 @@ public class ZombieGame {
                 game = false;
                 Menu.cleanup();
                 System.out.println("---------------------------------------------");
-                System.out.println(Color.CYAN + "Fin ! Merci d'avoir joué !" + Color.RESET);
+                System.out.println(Color.CYAN_BOLD + "Fin ! Merci d'avoir joué !" + Color.RESET);
                 System.out.println("---------------------------------------------");
                 Menu.wait(3000);
                 System.out.println("Voulez-vous sauvegarder votre score ? (y/n)");

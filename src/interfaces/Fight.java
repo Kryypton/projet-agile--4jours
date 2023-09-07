@@ -73,7 +73,8 @@ public class Fight {
 
             System.out.println("--------------------------------------------------------------------");
             System.out.println(
-                    Color.CYAN + "                      Que voulez vous faire ?                      " + Color.RESET);
+                    Color.CYAN_BOLD + "                      Que voulez vous faire ?                      "
+                            + Color.RESET);
             System.out.println("--------------------------------------------------------------------");
             System.out.println("1 - Attaquer");
             System.out.println("2 - Utiliser un objet");
@@ -96,7 +97,7 @@ public class Fight {
                     }
                     this.haveTryToEscape = true;
                     System.out.println("--------------------------------------------------------------------");
-                    System.out.println(Color.CYAN
+                    System.out.println(Color.CYAN_BOLD
                             + "                   Vous tenter de fuir le combat                   " + Color.RESET);
                     System.out.println("--------------------------------------------------------------------");
                     Random r = new Random();
@@ -145,7 +146,7 @@ public class Fight {
     public Boolean choiceUseItem() {
         Menu.cleanup();
         System.out.println("--------------------------------------------------------------------");
-        System.out.println(Color.CYAN + "                 Quel objet voulez vous utiliser ?                 "
+        System.out.println(Color.CYAN_BOLD + "                 Quel objet voulez vous utiliser ?                 "
                 + Color.RESET);
         System.out.println("--------------------------------------------------------------------");
         System.out.println("1 - Soin\n2 - Grenade\n3 - Recharger\n4 - Retour");
