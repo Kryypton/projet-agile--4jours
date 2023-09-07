@@ -3,6 +3,8 @@ package interfaces;
 import java.io.File;
 import java.util.Scanner;
 
+import exceptions.InvalidNameException;
+
 public class Menu {
     public static Scanner sc = new Scanner(System.in);
 
@@ -253,7 +255,14 @@ public class Menu {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("Veuillez saisir votre nom : ");
         String name = KeyboardInstruction.saisieClavierStr();
-        ZombieGame.PLAYER.setName(name);
+        try {
+            ZombieGame.PLAYER.setName(name);
+        } catch (InvalidNameException e) {
+            System.out.println("Erreur de saisie, veuillez recommencer");
+            Menu.wait(2000);
+            choiceDefName();
+        }
+
         System.out.println("Votre nom est maintenant : " + ZombieGame.PLAYER.getName());
         Menu.wait(2500);
     }

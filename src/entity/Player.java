@@ -3,6 +3,8 @@ package entity;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
+import exceptions.InvalidNameException;
 import map.Element;
 import utility.Info;
 import utility.Score;
@@ -188,7 +190,11 @@ public class Player extends Element {
         System.out.println("Vous ne pouvez pas utiliser cet objet.");
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name) throws InvalidNameException {
+        if (name.matches("^[a-zA-Z0-9_]*$")) {
+            this.name = name;
+        } else {
+            throw new InvalidNameException("Nom de joueur invalide ! ");
+        }
     }
 }
